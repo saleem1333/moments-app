@@ -1,0 +1,19 @@
+import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moments_app/application/posts/post_actor/post_actor_state.dart';
+import 'package:moments_app/domain/post/post_repository.dart';
+
+import '../../../domain/core/failure.dart';
+import '../../../domain/post/post.dart';
+
+class PostActorCubit extends Cubit<PostActorState> {
+  PostActorCubit(this._postRepository) : super(const PostActorState.initial());
+
+  final PostRepository _postRepository;
+
+  Future<void> deleted(Post post) async {
+    emit(const PostActorState.actionLoading());
+    final Either<Failure, Unit> failureOrSuccess = await _postRepository.deletePost(post);
+    emit(failureOrSuccess.fold((f) => PostActorState.deletedFailure(f), (_) => const PostActorState.deletedSuccess()));
+  }
+}
