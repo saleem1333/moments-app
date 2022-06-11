@@ -5,6 +5,8 @@ import 'auth_failure.dart';
 
 /// Auth interface that defines the common behaviours of authentication
 abstract class AuthFacade {
+  // to watch when the user sign in or log out
+  Stream<AppUser?> watchAuthStateChanges();
 
   /// login with an email and password
   Future<Either<AuthFailure, Unit>> loginWithEmailAndPassword(

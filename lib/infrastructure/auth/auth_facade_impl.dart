@@ -14,6 +14,11 @@ class AuthFacadeImpl implements AuthFacade {
   AuthFacadeImpl(this._firebaseAuth, this._firestore);
 
   @override
+  Stream<AppUser?> watchAuthStateChanges() async* {
+    yield* _firebaseAuth.authStateChanges().asyncMap((_) => currentUser);
+  }
+
+  @override
   Future<Either<AuthFailure, Unit>> loginWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
@@ -40,6 +45,6 @@ class AuthFacadeImpl implements AuthFacade {
 
   @override
   Future<void> signOut() {
-    throw UnimplementedError();
+    return _firebaseAuth.signOut();
   }
 }
