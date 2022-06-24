@@ -3,7 +3,7 @@ import 'package:moments_app/domain/post/post.dart';
 
 import '../core/failure.dart';
 
-abstract class PostRepository {
+abstract class PostsRepository {
   /// watch all posts
   Stream<Either<Failure, List<Post>>> watchAllPosts();
 
