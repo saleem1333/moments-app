@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moments_app/application/posts/post_watcher/post_watcher_state.dart';
-import 'package:moments_app/domain/post/post_repository.dart';
+import 'package:moments_app/domain/posts/posts_repository.dart';
 
 class PostWatcherCubit extends Cubit<PostWatcherState> {
   PostWatcherCubit(this._postRepository)
       : super(const PostWatcherState.initial());
 
-  final PostRepository _postRepository;
+  final PostsRepository _postRepository;
 
   StreamSubscription? _streamSubscription;
 

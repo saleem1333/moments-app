@@ -20,10 +20,12 @@ class _$PostFormStateTearOff {
 
   _PostFormState call(
       {required PostBody postBody,
+      required PostTags tags,
       required bool isSubmiting,
       required Either<Failure, Unit>? actionFailureOrSuccess}) {
     return _PostFormState(
       postBody: postBody,
+      tags: tags,
       isSubmiting: isSubmiting,
       actionFailureOrSuccess: actionFailureOrSuccess,
     );
@@ -36,6 +38,7 @@ const $PostFormState = _$PostFormStateTearOff();
 /// @nodoc
 mixin _$PostFormState {
   PostBody get postBody => throw _privateConstructorUsedError;
+  PostTags get tags => throw _privateConstructorUsedError;
   bool get isSubmiting => throw _privateConstructorUsedError;
   Either<Failure, Unit>? get actionFailureOrSuccess =>
       throw _privateConstructorUsedError;
@@ -52,6 +55,7 @@ abstract class $PostFormStateCopyWith<$Res> {
       _$PostFormStateCopyWithImpl<$Res>;
   $Res call(
       {PostBody postBody,
+      PostTags tags,
       bool isSubmiting,
       Either<Failure, Unit>? actionFailureOrSuccess});
 }
@@ -68,6 +72,7 @@ class _$PostFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? postBody = freezed,
+    Object? tags = freezed,
     Object? isSubmiting = freezed,
     Object? actionFailureOrSuccess = freezed,
   }) {
@@ -76,6 +81,10 @@ class _$PostFormStateCopyWithImpl<$Res>
           ? _value.postBody
           : postBody // ignore: cast_nullable_to_non_nullable
               as PostBody,
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as PostTags,
       isSubmiting: isSubmiting == freezed
           ? _value.isSubmiting
           : isSubmiting // ignore: cast_nullable_to_non_nullable
@@ -97,6 +106,7 @@ abstract class _$PostFormStateCopyWith<$Res>
   @override
   $Res call(
       {PostBody postBody,
+      PostTags tags,
       bool isSubmiting,
       Either<Failure, Unit>? actionFailureOrSuccess});
 }
@@ -115,6 +125,7 @@ class __$PostFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? postBody = freezed,
+    Object? tags = freezed,
     Object? isSubmiting = freezed,
     Object? actionFailureOrSuccess = freezed,
   }) {
@@ -123,6 +134,10 @@ class __$PostFormStateCopyWithImpl<$Res>
           ? _value.postBody
           : postBody // ignore: cast_nullable_to_non_nullable
               as PostBody,
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as PostTags,
       isSubmiting: isSubmiting == freezed
           ? _value.isSubmiting
           : isSubmiting // ignore: cast_nullable_to_non_nullable
@@ -140,11 +155,14 @@ class __$PostFormStateCopyWithImpl<$Res>
 class _$_PostFormState implements _PostFormState {
   const _$_PostFormState(
       {required this.postBody,
+      required this.tags,
       required this.isSubmiting,
       required this.actionFailureOrSuccess});
 
   @override
   final PostBody postBody;
+  @override
+  final PostTags tags;
   @override
   final bool isSubmiting;
   @override
@@ -152,7 +170,7 @@ class _$_PostFormState implements _PostFormState {
 
   @override
   String toString() {
-    return 'PostFormState(postBody: $postBody, isSubmiting: $isSubmiting, actionFailureOrSuccess: $actionFailureOrSuccess)';
+    return 'PostFormState(postBody: $postBody, tags: $tags, isSubmiting: $isSubmiting, actionFailureOrSuccess: $actionFailureOrSuccess)';
   }
 
   @override
@@ -161,6 +179,7 @@ class _$_PostFormState implements _PostFormState {
         (other.runtimeType == runtimeType &&
             other is _PostFormState &&
             const DeepCollectionEquality().equals(other.postBody, postBody) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
             const DeepCollectionEquality()
                 .equals(other.isSubmiting, isSubmiting) &&
             const DeepCollectionEquality()
@@ -171,6 +190,7 @@ class _$_PostFormState implements _PostFormState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(postBody),
+      const DeepCollectionEquality().hash(tags),
       const DeepCollectionEquality().hash(isSubmiting),
       const DeepCollectionEquality().hash(actionFailureOrSuccess));
 
@@ -183,12 +203,15 @@ class _$_PostFormState implements _PostFormState {
 abstract class _PostFormState implements PostFormState {
   const factory _PostFormState(
           {required PostBody postBody,
+          required PostTags tags,
           required bool isSubmiting,
           required Either<Failure, Unit>? actionFailureOrSuccess}) =
       _$_PostFormState;
 
   @override
   PostBody get postBody;
+  @override
+  PostTags get tags;
   @override
   bool get isSubmiting;
   @override

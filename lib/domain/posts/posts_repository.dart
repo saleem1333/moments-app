@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:moments_app/domain/post/post.dart';
+import 'package:moments_app/domain/posts/post.dart';
 
 import '../core/failure.dart';
 
@@ -10,7 +10,7 @@ abstract class PostsRepository {
   /// create new post
   Future<Either<Failure, Unit>> createPost(Post post);
 
-  /// QUESTION: Do we need an update method? is the post supposed to be updateable/editeble?
+  Future<Either<Failure, Unit>> updatePost(Post post);
 
   /// delete the given post
   Future<Either<Failure, Unit>> deletePost(Post post);

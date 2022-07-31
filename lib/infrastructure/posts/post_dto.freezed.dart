@@ -22,10 +22,16 @@ PostDto _$PostDtoFromJson(Map<String, dynamic> json) {
 class _$PostDtoTearOff {
   const _$PostDtoTearOff();
 
-  _PostDto call({required String id, required String content}) {
+  _PostDto call(
+      {required String id,
+      required String content,
+      required List<TagDto> tags,
+      @TimestampConverter() required Timestamp? timestamp}) {
     return _PostDto(
       id: id,
       content: content,
+      tags: tags,
+      timestamp: timestamp,
     );
   }
 
@@ -41,6 +47,9 @@ const $PostDto = _$PostDtoTearOff();
 mixin _$PostDto {
   String get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  List<TagDto> get tags => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  Timestamp? get timestamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +60,11 @@ mixin _$PostDto {
 abstract class $PostDtoCopyWith<$Res> {
   factory $PostDtoCopyWith(PostDto value, $Res Function(PostDto) then) =
       _$PostDtoCopyWithImpl<$Res>;
-  $Res call({String id, String content});
+  $Res call(
+      {String id,
+      String content,
+      List<TagDto> tags,
+      @TimestampConverter() Timestamp? timestamp});
 }
 
 /// @nodoc
@@ -66,6 +79,8 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? content = freezed,
+    Object? tags = freezed,
+    Object? timestamp = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -76,6 +91,14 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<TagDto>,
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as Timestamp?,
     ));
   }
 }
@@ -85,7 +108,11 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
   factory _$PostDtoCopyWith(_PostDto value, $Res Function(_PostDto) then) =
       __$PostDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String content});
+  $Res call(
+      {String id,
+      String content,
+      List<TagDto> tags,
+      @TimestampConverter() Timestamp? timestamp});
 }
 
 /// @nodoc
@@ -101,6 +128,8 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? content = freezed,
+    Object? tags = freezed,
+    Object? timestamp = freezed,
   }) {
     return _then(_PostDto(
       id: id == freezed
@@ -111,14 +140,28 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      tags: tags == freezed
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
+              as List<TagDto>,
+      timestamp: timestamp == freezed
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as Timestamp?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_PostDto extends _PostDto {
-  const _$_PostDto({required this.id, required this.content}) : super._();
+  const _$_PostDto(
+      {required this.id,
+      required this.content,
+      required this.tags,
+      @TimestampConverter() required this.timestamp})
+      : super._();
 
   factory _$_PostDto.fromJson(Map<String, dynamic> json) =>
       _$$_PostDtoFromJson(json);
@@ -127,10 +170,15 @@ class _$_PostDto extends _PostDto {
   final String id;
   @override
   final String content;
+  @override
+  final List<TagDto> tags;
+  @override
+  @TimestampConverter()
+  final Timestamp? timestamp;
 
   @override
   String toString() {
-    return 'PostDto(id: $id, content: $content)';
+    return 'PostDto(id: $id, content: $content, tags: $tags, timestamp: $timestamp)';
   }
 
   @override
@@ -139,14 +187,18 @@ class _$_PostDto extends _PostDto {
         (other.runtimeType == runtimeType &&
             other is _PostDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.content, content));
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality().equals(other.tags, tags) &&
+            const DeepCollectionEquality().equals(other.timestamp, timestamp));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(content));
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(tags),
+      const DeepCollectionEquality().hash(timestamp));
 
   @JsonKey(ignore: true)
   @override
@@ -160,8 +212,11 @@ class _$_PostDto extends _PostDto {
 }
 
 abstract class _PostDto extends PostDto {
-  const factory _PostDto({required String id, required String content}) =
-      _$_PostDto;
+  const factory _PostDto(
+      {required String id,
+      required String content,
+      required List<TagDto> tags,
+      @TimestampConverter() required Timestamp? timestamp}) = _$_PostDto;
   const _PostDto._() : super._();
 
   factory _PostDto.fromJson(Map<String, dynamic> json) = _$_PostDto.fromJson;
@@ -170,6 +225,11 @@ abstract class _PostDto extends PostDto {
   String get id;
   @override
   String get content;
+  @override
+  List<TagDto> get tags;
+  @override
+  @TimestampConverter()
+  Timestamp? get timestamp;
   @override
   @JsonKey(ignore: true)
   _$PostDtoCopyWith<_PostDto> get copyWith =>
