@@ -17,8 +17,21 @@ class PostsRepositoryImpl implements PostsRepository {
   @override
   Stream<Either<Failure, List<Post>>> watchAllPosts() async* {
     yield* _firestore
-        .userDoc()
+        .collectionGroup(FirestoreCollections.posts)
+        .orderBy("timestamp")
+        .snapshots()
+        .map((snapshot) => right<Failure, List<Post>>(snapshot.docs
+            .map((doc) => PostDto.fromJson(doc.data()).toDomain())
+            .toList()))
+        .handleError((error) => left(Failure(error.toString())));
+  }
+
+  @override
+  Stream<Either<Failure, List<Post>>> watchAllPostsByUserId(String id) async* {
+    yield* _firestore
         .collection(FirestoreCollections.posts)
+        .where("id", isEqualTo: id)
+        .orderBy("timestamp")
         .snapshots()
         .map((snapshot) => right<Failure, List<Post>>(snapshot.docs
             .map((doc) => PostDto.fromJson(doc.data()).toDomain())
