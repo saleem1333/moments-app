@@ -39,7 +39,7 @@ class TimestampConverter implements JsonConverter<Timestamp?, Object> {
   const TimestampConverter();
 
   @override
-  Timestamp? fromJson(Object object) {
+  Timestamp fromJson(Object object) {
     // object is guaranteed to be a timestamp instance
     return object as Timestamp;
   }
