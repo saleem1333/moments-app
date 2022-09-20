@@ -38,10 +38,12 @@ class AuthFacadeImpl implements AuthFacade {
   }
 
   @override
-  Future<AppUser?> get currentUser => _firestore
-      .userDoc()
-      .get()
-      .then((value) => AppUserDto.fromJson(value.data()!).toDomain());
+  Future<AppUser?> get currentUser => _firebaseAuth.currentUser == null
+      ? Future.value(null)
+      : _firestore
+          .userDoc()
+          .get()
+          .then((value) => AppUserDto.fromJson(value.data()!).toDomain());
 
   @override
   Future<void> signOut() {
