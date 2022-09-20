@@ -39,4 +39,18 @@ class AppUserRepositoryImpl implements AppUserRepository {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, AppUser>> getUserById(String id) async {
+    try {
+      final doc = _firestore.collection(FirestoreCollections.users).doc(id);
+      final ref = await doc.get();
+      if (!ref.exists) {
+        return left(const Failure("No user with such id exists"));
+      }
+      return right(AppUserDto.fromJson(ref.data()!).toDomain());
+    } on Exception {
+      return left(Failure("cannot fetch user"));
+    }
+  }
 }
