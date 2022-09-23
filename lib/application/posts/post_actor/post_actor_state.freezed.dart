@@ -12,33 +12,7 @@ part of 'post_actor_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PostActorStateTearOff {
-  const _$PostActorStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _ActionLoading actionLoading() {
-    return const _ActionLoading();
-  }
-
-  _DeletedSuccess deletedSuccess() {
-    return const _DeletedSuccess();
-  }
-
-  _DeletedFailure deletedFailure(Failure failure) {
-    return _DeletedFailure(
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $PostActorState = _$PostActorStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PostActorState {
@@ -112,19 +86,20 @@ class _$PostActorStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res> extends _$PostActorStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -140,7 +115,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -226,22 +201,22 @@ abstract class _Initial implements PostActorState {
 }
 
 /// @nodoc
-abstract class _$ActionLoadingCopyWith<$Res> {
-  factory _$ActionLoadingCopyWith(
-          _ActionLoading value, $Res Function(_ActionLoading) then) =
-      __$ActionLoadingCopyWithImpl<$Res>;
+abstract class _$$_ActionLoadingCopyWith<$Res> {
+  factory _$$_ActionLoadingCopyWith(
+          _$_ActionLoading value, $Res Function(_$_ActionLoading) then) =
+      __$$_ActionLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$ActionLoadingCopyWithImpl<$Res>
+class __$$_ActionLoadingCopyWithImpl<$Res>
     extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$ActionLoadingCopyWith<$Res> {
-  __$ActionLoadingCopyWithImpl(
-      _ActionLoading _value, $Res Function(_ActionLoading) _then)
-      : super(_value, (v) => _then(v as _ActionLoading));
+    implements _$$_ActionLoadingCopyWith<$Res> {
+  __$$_ActionLoadingCopyWithImpl(
+      _$_ActionLoading _value, $Res Function(_$_ActionLoading) _then)
+      : super(_value, (v) => _then(v as _$_ActionLoading));
 
   @override
-  _ActionLoading get _value => super._value as _ActionLoading;
+  _$_ActionLoading get _value => super._value as _$_ActionLoading;
 }
 
 /// @nodoc
@@ -257,7 +232,7 @@ class _$_ActionLoading implements _ActionLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _ActionLoading);
+        (other.runtimeType == runtimeType && other is _$_ActionLoading);
   }
 
   @override
@@ -343,22 +318,22 @@ abstract class _ActionLoading implements PostActorState {
 }
 
 /// @nodoc
-abstract class _$DeletedSuccessCopyWith<$Res> {
-  factory _$DeletedSuccessCopyWith(
-          _DeletedSuccess value, $Res Function(_DeletedSuccess) then) =
-      __$DeletedSuccessCopyWithImpl<$Res>;
+abstract class _$$_DeletedSuccessCopyWith<$Res> {
+  factory _$$_DeletedSuccessCopyWith(
+          _$_DeletedSuccess value, $Res Function(_$_DeletedSuccess) then) =
+      __$$_DeletedSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$DeletedSuccessCopyWithImpl<$Res>
+class __$$_DeletedSuccessCopyWithImpl<$Res>
     extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$DeletedSuccessCopyWith<$Res> {
-  __$DeletedSuccessCopyWithImpl(
-      _DeletedSuccess _value, $Res Function(_DeletedSuccess) _then)
-      : super(_value, (v) => _then(v as _DeletedSuccess));
+    implements _$$_DeletedSuccessCopyWith<$Res> {
+  __$$_DeletedSuccessCopyWithImpl(
+      _$_DeletedSuccess _value, $Res Function(_$_DeletedSuccess) _then)
+      : super(_value, (v) => _then(v as _$_DeletedSuccess));
 
   @override
-  _DeletedSuccess get _value => super._value as _DeletedSuccess;
+  _$_DeletedSuccess get _value => super._value as _$_DeletedSuccess;
 }
 
 /// @nodoc
@@ -374,7 +349,7 @@ class _$_DeletedSuccess implements _DeletedSuccess {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _DeletedSuccess);
+        (other.runtimeType == runtimeType && other is _$_DeletedSuccess);
   }
 
   @override
@@ -460,29 +435,29 @@ abstract class _DeletedSuccess implements PostActorState {
 }
 
 /// @nodoc
-abstract class _$DeletedFailureCopyWith<$Res> {
-  factory _$DeletedFailureCopyWith(
-          _DeletedFailure value, $Res Function(_DeletedFailure) then) =
-      __$DeletedFailureCopyWithImpl<$Res>;
+abstract class _$$_DeletedFailureCopyWith<$Res> {
+  factory _$$_DeletedFailureCopyWith(
+          _$_DeletedFailure value, $Res Function(_$_DeletedFailure) then) =
+      __$$_DeletedFailureCopyWithImpl<$Res>;
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$DeletedFailureCopyWithImpl<$Res>
+class __$$_DeletedFailureCopyWithImpl<$Res>
     extends _$PostActorStateCopyWithImpl<$Res>
-    implements _$DeletedFailureCopyWith<$Res> {
-  __$DeletedFailureCopyWithImpl(
-      _DeletedFailure _value, $Res Function(_DeletedFailure) _then)
-      : super(_value, (v) => _then(v as _DeletedFailure));
+    implements _$$_DeletedFailureCopyWith<$Res> {
+  __$$_DeletedFailureCopyWithImpl(
+      _$_DeletedFailure _value, $Res Function(_$_DeletedFailure) _then)
+      : super(_value, (v) => _then(v as _$_DeletedFailure));
 
   @override
-  _DeletedFailure get _value => super._value as _DeletedFailure;
+  _$_DeletedFailure get _value => super._value as _$_DeletedFailure;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(_DeletedFailure(
+    return _then(_$_DeletedFailure(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -508,7 +483,7 @@ class _$_DeletedFailure implements _DeletedFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _DeletedFailure &&
+            other is _$_DeletedFailure &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
 
@@ -518,8 +493,8 @@ class _$_DeletedFailure implements _DeletedFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$DeletedFailureCopyWith<_DeletedFailure> get copyWith =>
-      __$DeletedFailureCopyWithImpl<_DeletedFailure>(this, _$identity);
+  _$$_DeletedFailureCopyWith<_$_DeletedFailure> get copyWith =>
+      __$$_DeletedFailureCopyWithImpl<_$_DeletedFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -597,10 +572,10 @@ class _$_DeletedFailure implements _DeletedFailure {
 }
 
 abstract class _DeletedFailure implements PostActorState {
-  const factory _DeletedFailure(Failure failure) = _$_DeletedFailure;
+  const factory _DeletedFailure(final Failure failure) = _$_DeletedFailure;
 
   Failure get failure;
   @JsonKey(ignore: true)
-  _$DeletedFailureCopyWith<_DeletedFailure> get copyWith =>
+  _$$_DeletedFailureCopyWith<_$_DeletedFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

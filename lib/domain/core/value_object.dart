@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import 'failure.dart';
 
 /// a ValueObject is a class that handles validation
 /// any class that has validation logic should extend this class
-abstract class ValueObject<Value> {
+abstract class ValueObject<Value extends Object> extends Equatable {
   late final Value _value;
   late final Either<Failure, Value> failureOrValue;
 
@@ -16,6 +17,9 @@ abstract class ValueObject<Value> {
 
   @protected
   Value get value => _value;
+
+  @override
+  List<Object> get props => [value];
 
   bool isValid() => failureOrValue.isRight();
 

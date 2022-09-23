@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:moments_app/infrastructure/category/category_dto.dart';
 import 'package:moments_app/infrastructure/tags/tag_dto.dart';
 
+import '../../domain/app_user/app_user.dart';
 import '../../domain/posts/post.dart';
 part 'post_dto.g.dart';
 part 'post_dto.freezed.dart';
@@ -14,6 +16,7 @@ class PostDto with _$PostDto {
   const factory PostDto(
       {required String id,
       required String content,
+      required CateogoryDto category,
       required List<TagDto> tags,
       @TimestampConverter() required Timestamp? timestamp}) = _PostDto;
 
@@ -22,15 +25,20 @@ class PostDto with _$PostDto {
   factory PostDto.fromDomain(Post post) => PostDto(
       id: post.id,
       content: post.content.getOrCrash(),
+      category: CateogoryDto.fromDomain(post.category),
       tags:
           post.tags.getOrCrash().map((tag) => TagDto.fromDomain(tag)).toList(),
       timestamp:
           post.createdAt == null ? null : Timestamp.fromDate(post.createdAt!));
-  Post toDomain() {
+
+  /// since AppUser isn't supposed to be stored twice, AppUser is fetched from the database and get passed in here
+  Post toDomain(AppUser? user) {
     return Post(
         id: id,
+        appUser: user,
         content: PostBody(content),
         createdAt: timestamp!.toDate(),
+        category: category.toDomain(),
         tags: PostTags(tags.map((dto) => dto.toDomain()).toList()));
   }
 }

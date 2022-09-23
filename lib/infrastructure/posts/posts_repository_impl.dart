@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:moments_app/domain/app_user/app_user_repository.dart';
+import 'package:moments_app/domain/category/category.dart';
+import 'package:moments_app/domain/category/category_repository.dart';
 import 'package:moments_app/domain/core/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:moments_app/infrastructure/core/firestore_collections.dart';
@@ -11,36 +14,110 @@ import '../core/firebase_firestore_mapper.dart';
 
 class PostsRepositoryImpl implements PostsRepository {
   final FirebaseFirestore _firestore;
+  final AppUserRepository _appUserRepository;
+  final CategoryRepository _cateogoryRepository;
 
-  PostsRepositoryImpl(this._firestore);
+  PostsRepositoryImpl(
+      this._firestore, this._appUserRepository, this._cateogoryRepository);
 
   @override
   Stream<Either<Failure, List<Post>>> watchAllPosts() async* {
     yield* _firestore
         .collectionGroup(FirestoreCollections.posts)
-        .orderBy("timestamp")
+        .orderBy("timestamp", descending: true)
         .snapshots()
-        .map((snapshot) => right<Failure, List<Post>>(snapshot.docs
-            .map((doc) => PostDto.fromJson(doc.data()).toDomain())
-            .toList()))
-        .handleError((error) => left(Failure(error.toString())));
+        .map((snapshot) => right<Failure, Future<List<Post>>>(
+                Stream.fromIterable(snapshot.docs).asyncMap((doc) async {
+              // getting the user of the post
+
+              final user = await _appUserRepository
+                  .getUserById(doc.reference.parent.parent!.id);
+
+              return PostDto.fromJson(doc.data())
+                  .toDomain(user.getOrElse(() => throw Error()));
+            }).toList()))
+        .handleError((e) => left(Failure(e.toString())))
+        .asyncMap((snapshot) async =>
+            snapshot.fold((l) => left(l), (r) async => right(await r)));
   }
+
+  /// NOTE: THIS METHOD HAS NOT BEEN TESTED YET
+  @override
+  Stream<Either<Failure, List<Post>>> watchAllPostsByCateogory(
+      Category category) async* {
+    final fetchedCategory =
+        await _cateogoryRepository.findCategoryByName(category.name);
+    if (fetchedCategory == null) {
+      yield left<Failure, List<Post>>(
+          const Failure("The given category doesn't exist"));
+    } else {
+      yield* _firestore
+          .collectionGroup(FirestoreCollections.posts)
+          .where("category.name", isEqualTo: category.name.getOrCrash())
+          .orderBy("timestamp", descending: true)
+          .snapshots()
+          .map((snapshot) => right<Failure, Future<List<Post>>>(
+                  Stream.fromIterable(snapshot.docs).asyncMap((doc) async {
+                // getting the user of the post
+                final user = await _appUserRepository
+                    .getUserById(doc.reference.parent.id);
+
+                return PostDto.fromJson(doc.data())
+                    .toDomain(user.getOrElse(() => throw Error()));
+              }).toList()))
+          .handleError((e) => left(Failure(e.toString())))
+          .asyncMap((snapshot) async =>
+              snapshot.fold((l) => left(l), (r) async => right(await r)));
+    }
+  }
+
+  /// NOTE: THIS METHOD HAS NOT BEEN TESTED YET
+  @override
+  Stream<Either<Failure, List<Post>>> watchAllPostsByTags(
+      PostTags tags) async* {
+    Iterable<String> tagNames =
+        tags.getOrCrash().map((tag) => tag.name.getOrCrash());
+    yield* watchAllPosts()
+        .map((eitherFailureOrPosts) => eitherFailureOrPosts.fold(
+            (l) => left(l),
+            (posts) => right(posts.where((post) {
+                  Iterable<String> postTagNames = post.tags
+                      .getOrCrash()
+                      .map((tag) => tag.name.getOrCrash());
+                  return tagNames.every((name) => postTagNames.contains(name));
+                }).toList())));
+  }
+
+  /// NOTE: THIS METHOD HAS NOT BEEN TESTED YET
 
   @override
   Stream<Either<Failure, List<Post>>> watchAllPostsByUserId(String id) async* {
     yield* _firestore
+        .collection(FirestoreCollections.users)
+        .doc(id)
         .collection(FirestoreCollections.posts)
-        .where("id", isEqualTo: id)
-        .orderBy("timestamp")
+        .orderBy("timestamp", descending: true)
         .snapshots()
-        .map((snapshot) => right<Failure, List<Post>>(snapshot.docs
-            .map((doc) => PostDto.fromJson(doc.data()).toDomain())
-            .toList()))
-        .handleError((error) => left(Failure(error.toString())));
+        .map((snapshot) => right<Failure, Future<List<Post>>>(
+                Stream.fromIterable(snapshot.docs).asyncMap((doc) async {
+              final user = await _appUserRepository.getUserById(id);
+              return PostDto.fromJson(doc.data())
+                  .toDomain(user.getOrElse(() => throw Error()));
+            }).toList()))
+        .handleError((error) => left(Failure(error.toString())))
+        .asyncMap((snapshot) async =>
+            snapshot.fold((l) => left(l), (r) async => right(await r)));
   }
 
   @override
   Future<Either<Failure, Unit>> createPost(Post post) async {
+    final category =
+        await _cateogoryRepository.findCategoryByName(post.category.name);
+
+    if (category == null) {
+      return left(Failure("Creating post failed! category doesn't exist."));
+    }
+
     final postDto = PostDto.fromDomain(post);
     try {
       await _firestore

@@ -12,35 +12,7 @@ part of 'post_watcher_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PostWatcherStateTearOff {
-  const _$PostWatcherStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _Loading loading() {
-    return const _Loading();
-  }
-
-  _LoadedSuccess loadedSuccess(List<Post> posts) {
-    return _LoadedSuccess(
-      posts,
-    );
-  }
-
-  _LoadedFailure loadedFailure(Failure failure) {
-    return _LoadedFailure(
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $PostWatcherState = _$PostWatcherStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PostWatcherState {
@@ -114,19 +86,21 @@ class _$PostWatcherStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$PostWatcherStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$PostWatcherStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -142,7 +116,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -228,19 +202,21 @@ abstract class _Initial implements PostWatcherState {
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class _$$_LoadingCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$PostWatcherStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$PostWatcherStateCopyWithImpl<$Res>
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, (v) => _then(v as _$_Loading));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  _$_Loading get _value => super._value as _$_Loading;
 }
 
 /// @nodoc
@@ -256,7 +232,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -342,31 +318,31 @@ abstract class _Loading implements PostWatcherState {
 }
 
 /// @nodoc
-abstract class _$LoadedSuccessCopyWith<$Res> {
-  factory _$LoadedSuccessCopyWith(
-          _LoadedSuccess value, $Res Function(_LoadedSuccess) then) =
-      __$LoadedSuccessCopyWithImpl<$Res>;
+abstract class _$$_LoadedSuccessCopyWith<$Res> {
+  factory _$$_LoadedSuccessCopyWith(
+          _$_LoadedSuccess value, $Res Function(_$_LoadedSuccess) then) =
+      __$$_LoadedSuccessCopyWithImpl<$Res>;
   $Res call({List<Post> posts});
 }
 
 /// @nodoc
-class __$LoadedSuccessCopyWithImpl<$Res>
+class __$$_LoadedSuccessCopyWithImpl<$Res>
     extends _$PostWatcherStateCopyWithImpl<$Res>
-    implements _$LoadedSuccessCopyWith<$Res> {
-  __$LoadedSuccessCopyWithImpl(
-      _LoadedSuccess _value, $Res Function(_LoadedSuccess) _then)
-      : super(_value, (v) => _then(v as _LoadedSuccess));
+    implements _$$_LoadedSuccessCopyWith<$Res> {
+  __$$_LoadedSuccessCopyWithImpl(
+      _$_LoadedSuccess _value, $Res Function(_$_LoadedSuccess) _then)
+      : super(_value, (v) => _then(v as _$_LoadedSuccess));
 
   @override
-  _LoadedSuccess get _value => super._value as _LoadedSuccess;
+  _$_LoadedSuccess get _value => super._value as _$_LoadedSuccess;
 
   @override
   $Res call({
     Object? posts = freezed,
   }) {
-    return _then(_LoadedSuccess(
+    return _then(_$_LoadedSuccess(
       posts == freezed
-          ? _value.posts
+          ? _value._posts
           : posts // ignore: cast_nullable_to_non_nullable
               as List<Post>,
     ));
@@ -376,10 +352,14 @@ class __$LoadedSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedSuccess implements _LoadedSuccess {
-  const _$_LoadedSuccess(this.posts);
+  const _$_LoadedSuccess(final List<Post> posts) : _posts = posts;
 
+  final List<Post> _posts;
   @override
-  final List<Post> posts;
+  List<Post> get posts {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_posts);
+  }
 
   @override
   String toString() {
@@ -390,18 +370,18 @@ class _$_LoadedSuccess implements _LoadedSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadedSuccess &&
-            const DeepCollectionEquality().equals(other.posts, posts));
+            other is _$_LoadedSuccess &&
+            const DeepCollectionEquality().equals(other._posts, _posts));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(posts));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
 
   @JsonKey(ignore: true)
   @override
-  _$LoadedSuccessCopyWith<_LoadedSuccess> get copyWith =>
-      __$LoadedSuccessCopyWithImpl<_LoadedSuccess>(this, _$identity);
+  _$$_LoadedSuccessCopyWith<_$_LoadedSuccess> get copyWith =>
+      __$$_LoadedSuccessCopyWithImpl<_$_LoadedSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -479,38 +459,38 @@ class _$_LoadedSuccess implements _LoadedSuccess {
 }
 
 abstract class _LoadedSuccess implements PostWatcherState {
-  const factory _LoadedSuccess(List<Post> posts) = _$_LoadedSuccess;
+  const factory _LoadedSuccess(final List<Post> posts) = _$_LoadedSuccess;
 
   List<Post> get posts;
   @JsonKey(ignore: true)
-  _$LoadedSuccessCopyWith<_LoadedSuccess> get copyWith =>
+  _$$_LoadedSuccessCopyWith<_$_LoadedSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadedFailureCopyWith<$Res> {
-  factory _$LoadedFailureCopyWith(
-          _LoadedFailure value, $Res Function(_LoadedFailure) then) =
-      __$LoadedFailureCopyWithImpl<$Res>;
+abstract class _$$_LoadedFailureCopyWith<$Res> {
+  factory _$$_LoadedFailureCopyWith(
+          _$_LoadedFailure value, $Res Function(_$_LoadedFailure) then) =
+      __$$_LoadedFailureCopyWithImpl<$Res>;
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$LoadedFailureCopyWithImpl<$Res>
+class __$$_LoadedFailureCopyWithImpl<$Res>
     extends _$PostWatcherStateCopyWithImpl<$Res>
-    implements _$LoadedFailureCopyWith<$Res> {
-  __$LoadedFailureCopyWithImpl(
-      _LoadedFailure _value, $Res Function(_LoadedFailure) _then)
-      : super(_value, (v) => _then(v as _LoadedFailure));
+    implements _$$_LoadedFailureCopyWith<$Res> {
+  __$$_LoadedFailureCopyWithImpl(
+      _$_LoadedFailure _value, $Res Function(_$_LoadedFailure) _then)
+      : super(_value, (v) => _then(v as _$_LoadedFailure));
 
   @override
-  _LoadedFailure get _value => super._value as _LoadedFailure;
+  _$_LoadedFailure get _value => super._value as _$_LoadedFailure;
 
   @override
   $Res call({
     Object? failure = freezed,
   }) {
-    return _then(_LoadedFailure(
+    return _then(_$_LoadedFailure(
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -536,7 +516,7 @@ class _$_LoadedFailure implements _LoadedFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadedFailure &&
+            other is _$_LoadedFailure &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
 
@@ -546,8 +526,8 @@ class _$_LoadedFailure implements _LoadedFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$LoadedFailureCopyWith<_LoadedFailure> get copyWith =>
-      __$LoadedFailureCopyWithImpl<_LoadedFailure>(this, _$identity);
+  _$$_LoadedFailureCopyWith<_$_LoadedFailure> get copyWith =>
+      __$$_LoadedFailureCopyWithImpl<_$_LoadedFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -625,10 +605,10 @@ class _$_LoadedFailure implements _LoadedFailure {
 }
 
 abstract class _LoadedFailure implements PostWatcherState {
-  const factory _LoadedFailure(Failure failure) = _$_LoadedFailure;
+  const factory _LoadedFailure(final Failure failure) = _$_LoadedFailure;
 
   Failure get failure;
   @JsonKey(ignore: true)
-  _$LoadedFailureCopyWith<_LoadedFailure> get copyWith =>
+  _$$_LoadedFailureCopyWith<_$_LoadedFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }

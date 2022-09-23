@@ -1,73 +1,42 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:moments_app/application/auth/auth_cubit.dart';
+import 'package:moments_app/injections.dart';
+import 'package:moments_app/presentation/screens/posts/posts_screen.dart';
+import 'package:moments_app/presentation/screens/posts/post_form_screen.dart';
+import 'package:moments_app/presentation/screens/sign_in_form/sign_in_form_screen.dart';
+import 'package:moments_app/presentation/screens/sign_up_form/sign_up_form_screen.dart';
+import 'package:moments_app/presentation/screens/splash/splash_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+final GoRouter _router = GoRouter(initialLocation: "/posts", routes: <GoRoute>[
+  GoRoute(path: "/", builder: (_, __) => const SplashScreen()),
+  GoRoute(path: "/posts", builder: (_, __) => const PostsScreen()),
+  GoRoute(path: "/login", builder: (_, __) => const SignInFormScreen()),
+  GoRoute(path: "/register", builder: (_, __) => const SignUpFormScreen()),
+  GoRoute(path: "/posts/create", builder: (_, __) => const PostFormScreen())
+]);
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  registerInjections();
+
+  runApp(BlocProvider<AuthCubit>(
+    create: (context) => getIt<AuthCubit>()..startWatchAuthentication(),
+    child: const App(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-        
-        child: Column(
-        
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+    return MaterialApp.router(
+      routeInformationParser: _router.routeInformationParser,
+      routeInformationProvider: _router.routeInformationProvider,
+      routerDelegate: _router.routerDelegate,
     );
   }
 }

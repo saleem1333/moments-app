@@ -9,6 +9,7 @@ part of 'post_dto.dart';
 _$_PostDto _$$_PostDtoFromJson(Map<String, dynamic> json) => _$_PostDto(
       id: json['id'] as String,
       content: json['content'] as String,
+      category: CateogoryDto.fromJson(json['category'] as Map<String, dynamic>),
       tags: (json['tags'] as List<dynamic>)
           .map((e) => TagDto.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$_PostDtoToJson(_$_PostDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'content': instance.content,
+      'category': instance.category.toJson(),
       'tags': instance.tags.map((e) => e.toJson()).toList(),
       'timestamp': const TimestampConverter().toJson(instance.timestamp),
     };

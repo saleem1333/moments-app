@@ -12,30 +12,11 @@ part of 'tag_dto.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TagDto _$TagDtoFromJson(Map<String, dynamic> json) {
   return _TagDto.fromJson(json);
 }
-
-/// @nodoc
-class _$TagDtoTearOff {
-  const _$TagDtoTearOff();
-
-  _TagDto call({required String id, required String name}) {
-    return _TagDto(
-      id: id,
-      name: name,
-    );
-  }
-
-  TagDto fromJson(Map<String, Object?> json) {
-    return TagDto.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $TagDto = _$TagDtoTearOff();
 
 /// @nodoc
 mixin _$TagDto {
@@ -81,28 +62,28 @@ class _$TagDtoCopyWithImpl<$Res> implements $TagDtoCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TagDtoCopyWith<$Res> implements $TagDtoCopyWith<$Res> {
-  factory _$TagDtoCopyWith(_TagDto value, $Res Function(_TagDto) then) =
-      __$TagDtoCopyWithImpl<$Res>;
+abstract class _$$_TagDtoCopyWith<$Res> implements $TagDtoCopyWith<$Res> {
+  factory _$$_TagDtoCopyWith(_$_TagDto value, $Res Function(_$_TagDto) then) =
+      __$$_TagDtoCopyWithImpl<$Res>;
   @override
   $Res call({String id, String name});
 }
 
 /// @nodoc
-class __$TagDtoCopyWithImpl<$Res> extends _$TagDtoCopyWithImpl<$Res>
-    implements _$TagDtoCopyWith<$Res> {
-  __$TagDtoCopyWithImpl(_TagDto _value, $Res Function(_TagDto) _then)
-      : super(_value, (v) => _then(v as _TagDto));
+class __$$_TagDtoCopyWithImpl<$Res> extends _$TagDtoCopyWithImpl<$Res>
+    implements _$$_TagDtoCopyWith<$Res> {
+  __$$_TagDtoCopyWithImpl(_$_TagDto _value, $Res Function(_$_TagDto) _then)
+      : super(_value, (v) => _then(v as _$_TagDto));
 
   @override
-  _TagDto get _value => super._value as _TagDto;
+  _$_TagDto get _value => super._value as _$_TagDto;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_TagDto(
+    return _then(_$_TagDto(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -137,11 +118,12 @@ class _$_TagDto extends _TagDto {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TagDto &&
+            other is _$_TagDto &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -150,17 +132,20 @@ class _$_TagDto extends _TagDto {
 
   @JsonKey(ignore: true)
   @override
-  _$TagDtoCopyWith<_TagDto> get copyWith =>
-      __$TagDtoCopyWithImpl<_TagDto>(this, _$identity);
+  _$$_TagDtoCopyWith<_$_TagDto> get copyWith =>
+      __$$_TagDtoCopyWithImpl<_$_TagDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TagDtoToJson(this);
+    return _$$_TagDtoToJson(
+      this,
+    );
   }
 }
 
 abstract class _TagDto extends TagDto {
-  const factory _TagDto({required String id, required String name}) = _$_TagDto;
+  const factory _TagDto(
+      {required final String id, required final String name}) = _$_TagDto;
   const _TagDto._() : super._();
 
   factory _TagDto.fromJson(Map<String, dynamic> json) = _$_TagDto.fromJson;
@@ -171,5 +156,6 @@ abstract class _TagDto extends TagDto {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$TagDtoCopyWith<_TagDto> get copyWith => throw _privateConstructorUsedError;
+  _$$_TagDtoCopyWith<_$_TagDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -12,11 +12,13 @@ class SignInFormCubit extends Cubit<SignInFormState> {
   final AuthFacade _authFacade;
 
   void emailChanged(String emailStr) {
-    emit(state.copyWith(emailAddress: EmailAddress(emailStr)));
+    emit(state.copyWith(
+        emailAddress: EmailAddress(emailStr), authFailureOrSuccess: null));
   }
 
   void passwordChanged(String passwordStr) {
-    emit(state.copyWith(password: Password(passwordStr)));
+    emit(state.copyWith(
+        password: Password(passwordStr), authFailureOrSuccess: null));
   }
 
   Future<void> submit() async {

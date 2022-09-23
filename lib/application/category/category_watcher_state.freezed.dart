@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'tags_watcher_state.dart';
+part of 'category_watcher_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,60 +12,32 @@ part of 'tags_watcher_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$TagsWatcherStateTearOff {
-  const _$TagsWatcherStateTearOff();
-
-  _Initial initial() {
-    return const _Initial();
-  }
-
-  _Loading loading() {
-    return const _Loading();
-  }
-
-  _LoadedSuccess loadedSuccess(List<Tag> tags) {
-    return _LoadedSuccess(
-      tags,
-    );
-  }
-
-  _LoadedFailure loadedFailure(Failure failure) {
-    return _LoadedFailure(
-      failure,
-    );
-  }
-}
-
-/// @nodoc
-const $TagsWatcherState = _$TagsWatcherStateTearOff();
-
-/// @nodoc
-mixin _$TagsWatcherState {
+mixin _$CategoryWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tag> tags) loadedSuccess,
-    required TResult Function(Failure failure) loadedFailure,
+    required TResult Function(List<Category> categories) loadedSuccess,
+    required TResult Function(Failure f) loadedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -97,36 +69,38 @@ mixin _$TagsWatcherState {
 }
 
 /// @nodoc
-abstract class $TagsWatcherStateCopyWith<$Res> {
-  factory $TagsWatcherStateCopyWith(
-          TagsWatcherState value, $Res Function(TagsWatcherState) then) =
-      _$TagsWatcherStateCopyWithImpl<$Res>;
+abstract class $CategoryWatcherStateCopyWith<$Res> {
+  factory $CategoryWatcherStateCopyWith(CategoryWatcherState value,
+          $Res Function(CategoryWatcherState) then) =
+      _$CategoryWatcherStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TagsWatcherStateCopyWithImpl<$Res>
-    implements $TagsWatcherStateCopyWith<$Res> {
-  _$TagsWatcherStateCopyWithImpl(this._value, this._then);
+class _$CategoryWatcherStateCopyWithImpl<$Res>
+    implements $CategoryWatcherStateCopyWith<$Res> {
+  _$CategoryWatcherStateCopyWithImpl(this._value, this._then);
 
-  final TagsWatcherState _value;
+  final CategoryWatcherState _value;
   // ignore: unused_field
-  final $Res Function(TagsWatcherState) _then;
+  final $Res Function(CategoryWatcherState) _then;
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$$_InitialCopyWith<$Res> {
+  factory _$$_InitialCopyWith(
+          _$_Initial value, $Res Function(_$_Initial) then) =
+      __$$_InitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$TagsWatcherStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$CategoryWatcherStateCopyWithImpl<$Res>
+    implements _$$_InitialCopyWith<$Res> {
+  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+      : super(_value, (v) => _then(v as _$_Initial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -136,13 +110,13 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'TagsWatcherState.initial()';
+    return 'CategoryWatcherState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _$_Initial);
   }
 
   @override
@@ -153,8 +127,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tag> tags) loadedSuccess,
-    required TResult Function(Failure failure) loadedFailure,
+    required TResult Function(List<Category> categories) loadedSuccess,
+    required TResult Function(Failure f) loadedFailure,
   }) {
     return initial();
   }
@@ -164,8 +138,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
   }) {
     return initial?.call();
   }
@@ -175,8 +149,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -223,24 +197,26 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements TagsWatcherState {
+abstract class _Initial implements CategoryWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class _$$_LoadingCopyWith<$Res> {
+  factory _$$_LoadingCopyWith(
+          _$_Loading value, $Res Function(_$_Loading) then) =
+      __$$_LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$TagsWatcherStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$CategoryWatcherStateCopyWithImpl<$Res>
+    implements _$$_LoadingCopyWith<$Res> {
+  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+      : super(_value, (v) => _then(v as _$_Loading));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  _$_Loading get _value => super._value as _$_Loading;
 }
 
 /// @nodoc
@@ -250,13 +226,13 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'TagsWatcherState.loading()';
+    return 'CategoryWatcherState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loading);
+        (other.runtimeType == runtimeType && other is _$_Loading);
   }
 
   @override
@@ -267,8 +243,8 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tag> tags) loadedSuccess,
-    required TResult Function(Failure failure) loadedFailure,
+    required TResult Function(List<Category> categories) loadedSuccess,
+    required TResult Function(Failure f) loadedFailure,
   }) {
     return loading();
   }
@@ -278,8 +254,8 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
   }) {
     return loading?.call();
   }
@@ -289,8 +265,8 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -337,38 +313,38 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements TagsWatcherState {
+abstract class _Loading implements CategoryWatcherState {
   const factory _Loading() = _$_Loading;
 }
 
 /// @nodoc
-abstract class _$LoadedSuccessCopyWith<$Res> {
-  factory _$LoadedSuccessCopyWith(
-          _LoadedSuccess value, $Res Function(_LoadedSuccess) then) =
-      __$LoadedSuccessCopyWithImpl<$Res>;
-  $Res call({List<Tag> tags});
+abstract class _$$_LoadedSuccessCopyWith<$Res> {
+  factory _$$_LoadedSuccessCopyWith(
+          _$_LoadedSuccess value, $Res Function(_$_LoadedSuccess) then) =
+      __$$_LoadedSuccessCopyWithImpl<$Res>;
+  $Res call({List<Category> categories});
 }
 
 /// @nodoc
-class __$LoadedSuccessCopyWithImpl<$Res>
-    extends _$TagsWatcherStateCopyWithImpl<$Res>
-    implements _$LoadedSuccessCopyWith<$Res> {
-  __$LoadedSuccessCopyWithImpl(
-      _LoadedSuccess _value, $Res Function(_LoadedSuccess) _then)
-      : super(_value, (v) => _then(v as _LoadedSuccess));
+class __$$_LoadedSuccessCopyWithImpl<$Res>
+    extends _$CategoryWatcherStateCopyWithImpl<$Res>
+    implements _$$_LoadedSuccessCopyWith<$Res> {
+  __$$_LoadedSuccessCopyWithImpl(
+      _$_LoadedSuccess _value, $Res Function(_$_LoadedSuccess) _then)
+      : super(_value, (v) => _then(v as _$_LoadedSuccess));
 
   @override
-  _LoadedSuccess get _value => super._value as _LoadedSuccess;
+  _$_LoadedSuccess get _value => super._value as _$_LoadedSuccess;
 
   @override
   $Res call({
-    Object? tags = freezed,
+    Object? categories = freezed,
   }) {
-    return _then(_LoadedSuccess(
-      tags == freezed
-          ? _value.tags
-          : tags // ignore: cast_nullable_to_non_nullable
-              as List<Tag>,
+    return _then(_$_LoadedSuccess(
+      categories == freezed
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<Category>,
     ));
   }
 }
@@ -376,42 +352,48 @@ class __$LoadedSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedSuccess implements _LoadedSuccess {
-  const _$_LoadedSuccess(this.tags);
+  const _$_LoadedSuccess(final List<Category> categories)
+      : _categories = categories;
 
+  final List<Category> _categories;
   @override
-  final List<Tag> tags;
+  List<Category> get categories {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
 
   @override
   String toString() {
-    return 'TagsWatcherState.loadedSuccess(tags: $tags)';
+    return 'CategoryWatcherState.loadedSuccess(categories: $categories)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadedSuccess &&
-            const DeepCollectionEquality().equals(other.tags, tags));
+            other is _$_LoadedSuccess &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(tags));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
   @override
-  _$LoadedSuccessCopyWith<_LoadedSuccess> get copyWith =>
-      __$LoadedSuccessCopyWithImpl<_LoadedSuccess>(this, _$identity);
+  _$$_LoadedSuccessCopyWith<_$_LoadedSuccess> get copyWith =>
+      __$$_LoadedSuccessCopyWithImpl<_$_LoadedSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tag> tags) loadedSuccess,
-    required TResult Function(Failure failure) loadedFailure,
+    required TResult Function(List<Category> categories) loadedSuccess,
+    required TResult Function(Failure f) loadedFailure,
   }) {
-    return loadedSuccess(tags);
+    return loadedSuccess(categories);
   }
 
   @override
@@ -419,10 +401,10 @@ class _$_LoadedSuccess implements _LoadedSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
   }) {
-    return loadedSuccess?.call(tags);
+    return loadedSuccess?.call(categories);
   }
 
   @override
@@ -430,12 +412,12 @@ class _$_LoadedSuccess implements _LoadedSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
     required TResult orElse(),
   }) {
     if (loadedSuccess != null) {
-      return loadedSuccess(tags);
+      return loadedSuccess(categories);
     }
     return orElse();
   }
@@ -478,42 +460,43 @@ class _$_LoadedSuccess implements _LoadedSuccess {
   }
 }
 
-abstract class _LoadedSuccess implements TagsWatcherState {
-  const factory _LoadedSuccess(List<Tag> tags) = _$_LoadedSuccess;
+abstract class _LoadedSuccess implements CategoryWatcherState {
+  const factory _LoadedSuccess(final List<Category> categories) =
+      _$_LoadedSuccess;
 
-  List<Tag> get tags;
+  List<Category> get categories;
   @JsonKey(ignore: true)
-  _$LoadedSuccessCopyWith<_LoadedSuccess> get copyWith =>
+  _$$_LoadedSuccessCopyWith<_$_LoadedSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LoadedFailureCopyWith<$Res> {
-  factory _$LoadedFailureCopyWith(
-          _LoadedFailure value, $Res Function(_LoadedFailure) then) =
-      __$LoadedFailureCopyWithImpl<$Res>;
-  $Res call({Failure failure});
+abstract class _$$_LoadedFailureCopyWith<$Res> {
+  factory _$$_LoadedFailureCopyWith(
+          _$_LoadedFailure value, $Res Function(_$_LoadedFailure) then) =
+      __$$_LoadedFailureCopyWithImpl<$Res>;
+  $Res call({Failure f});
 }
 
 /// @nodoc
-class __$LoadedFailureCopyWithImpl<$Res>
-    extends _$TagsWatcherStateCopyWithImpl<$Res>
-    implements _$LoadedFailureCopyWith<$Res> {
-  __$LoadedFailureCopyWithImpl(
-      _LoadedFailure _value, $Res Function(_LoadedFailure) _then)
-      : super(_value, (v) => _then(v as _LoadedFailure));
+class __$$_LoadedFailureCopyWithImpl<$Res>
+    extends _$CategoryWatcherStateCopyWithImpl<$Res>
+    implements _$$_LoadedFailureCopyWith<$Res> {
+  __$$_LoadedFailureCopyWithImpl(
+      _$_LoadedFailure _value, $Res Function(_$_LoadedFailure) _then)
+      : super(_value, (v) => _then(v as _$_LoadedFailure));
 
   @override
-  _LoadedFailure get _value => super._value as _LoadedFailure;
+  _$_LoadedFailure get _value => super._value as _$_LoadedFailure;
 
   @override
   $Res call({
-    Object? failure = freezed,
+    Object? f = freezed,
   }) {
-    return _then(_LoadedFailure(
-      failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
+    return _then(_$_LoadedFailure(
+      f == freezed
+          ? _value.f
+          : f // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
   }
@@ -522,42 +505,42 @@ class __$LoadedFailureCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadedFailure implements _LoadedFailure {
-  const _$_LoadedFailure(this.failure);
+  const _$_LoadedFailure(this.f);
 
   @override
-  final Failure failure;
+  final Failure f;
 
   @override
   String toString() {
-    return 'TagsWatcherState.loadedFailure(failure: $failure)';
+    return 'CategoryWatcherState.loadedFailure(f: $f)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoadedFailure &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            other is _$_LoadedFailure &&
+            const DeepCollectionEquality().equals(other.f, f));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(f));
 
   @JsonKey(ignore: true)
   @override
-  _$LoadedFailureCopyWith<_LoadedFailure> get copyWith =>
-      __$LoadedFailureCopyWithImpl<_LoadedFailure>(this, _$identity);
+  _$$_LoadedFailureCopyWith<_$_LoadedFailure> get copyWith =>
+      __$$_LoadedFailureCopyWithImpl<_$_LoadedFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Tag> tags) loadedSuccess,
-    required TResult Function(Failure failure) loadedFailure,
+    required TResult Function(List<Category> categories) loadedSuccess,
+    required TResult Function(Failure f) loadedFailure,
   }) {
-    return loadedFailure(failure);
+    return loadedFailure(f);
   }
 
   @override
@@ -565,10 +548,10 @@ class _$_LoadedFailure implements _LoadedFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
   }) {
-    return loadedFailure?.call(failure);
+    return loadedFailure?.call(f);
   }
 
   @override
@@ -576,12 +559,12 @@ class _$_LoadedFailure implements _LoadedFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Tag> tags)? loadedSuccess,
-    TResult Function(Failure failure)? loadedFailure,
+    TResult Function(List<Category> categories)? loadedSuccess,
+    TResult Function(Failure f)? loadedFailure,
     required TResult orElse(),
   }) {
     if (loadedFailure != null) {
-      return loadedFailure(failure);
+      return loadedFailure(f);
     }
     return orElse();
   }
@@ -624,11 +607,11 @@ class _$_LoadedFailure implements _LoadedFailure {
   }
 }
 
-abstract class _LoadedFailure implements TagsWatcherState {
-  const factory _LoadedFailure(Failure failure) = _$_LoadedFailure;
+abstract class _LoadedFailure implements CategoryWatcherState {
+  const factory _LoadedFailure(final Failure f) = _$_LoadedFailure;
 
-  Failure get failure;
+  Failure get f;
   @JsonKey(ignore: true)
-  _$LoadedFailureCopyWith<_LoadedFailure> get copyWith =>
+  _$$_LoadedFailureCopyWith<_$_LoadedFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
