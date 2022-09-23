@@ -6,6 +6,8 @@ import 'package:moments_app/application/posts/post_watcher/post_watcher_cubit.da
 import 'package:moments_app/domain/posts/posts_repository.dart';
 import 'package:moments_app/injections.dart';
 
+import '../../../routes/routes.dart';
+
 class PostsScreen extends StatelessWidget {
   const PostsScreen({Key? key}) : super(key: key);
 
@@ -18,7 +20,7 @@ class PostsScreen extends StatelessWidget {
                 context
                     .read<AuthCubit>()
                     .logout()
-                    .then((_) => context.go("/login"));
+                    .then((_) => context.go(Routes.signIn));
               },
               icon: Icon(Icons.logout))),
       body: BlocProvider<PostWatcherCubit>(

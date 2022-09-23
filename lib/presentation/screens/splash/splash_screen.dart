@@ -4,6 +4,8 @@ import 'package:moments_app/application/auth/auth_cubit.dart';
 import 'package:moments_app/application/auth/auth_state.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../routes/routes.dart';
+
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -13,8 +15,8 @@ class SplashScreen extends StatelessWidget {
       listener: (context, state) {
         state.when(
             initial: () {},
-            authenticated: () => context.go("/posts"),
-            unAuthenticated: () => context.go("/login"));
+            authenticated: () => context.go(Routes.posts),
+            unAuthenticated: () => context.go(Routes.signIn));
       },
       child: Scaffold(
         body: Center(child: CircularProgressIndicator()),
