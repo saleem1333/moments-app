@@ -23,4 +23,10 @@ class CategoryWatcherCubit extends Cubit<CategoryWatcherState> {
           (categories) => CategoryWatcherState.loadedSuccess(categories)));
     });
   }
+
+  @override
+  Future<void> close() async {
+    await _streamSubscription?.cancel();
+    return super.close();
+  }
 }
