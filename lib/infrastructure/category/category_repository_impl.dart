@@ -12,7 +12,7 @@ class CategoryRepositoryImpl implements CategoryRepository {
 
   CategoryRepositoryImpl(this._firestore);
   @override
-  Stream<Either<Failure, List<Category>>> watchAllCateogories() async* {
+  Stream<Either<Failure, List<Category>>> watchAllCategories() async* {
     yield* _firestore
         .collection(FirestoreCollections.categories)
         .snapshots()

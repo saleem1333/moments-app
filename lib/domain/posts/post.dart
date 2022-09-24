@@ -7,7 +7,7 @@ import '../core/value_object.dart';
 import '../tags/tag.dart';
 
 class Post {
-  // it really doesn't make sense for the appUser to be nullable sincec every post has a poster but it is really essential to do that for the time being
+  // it really doesn't make sense for the appUser to be nullable since every post has a poster but it is really essential to do that for the time being
   // due to not knowing the user when the applciation layer instantiates a new Post
   final String id;
   final AppUser? appUser;
