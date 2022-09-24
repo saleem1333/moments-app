@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moments_app/application/auth/auth_cubit.dart';
 import 'package:moments_app/injections.dart';
-import 'package:moments_app/routes/routes.dart';
+import 'package:moments_app/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

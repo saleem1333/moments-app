@@ -1,12 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moments_app/application/auth/sign_in_form/sign_in_form_cubit.dart';
 import 'package:moments_app/application/auth/sign_in_form/sign_in_form_state.dart';
 import 'package:moments_app/injections.dart';
-import 'package:moments_app/routes/routes.dart';
+
+import '../../../routes.dart';
 
 class SignInFormScreen extends StatelessWidget {
   const SignInFormScreen({Key? key}) : super(key: key);

@@ -4,7 +4,7 @@ import 'package:moments_app/application/auth/auth_cubit.dart';
 import 'package:moments_app/application/auth/auth_state.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../routes/routes.dart';
+import '../../../routes.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
