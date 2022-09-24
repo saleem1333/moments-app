@@ -13,6 +13,9 @@ class CategoryName extends ValueObject<String> {
 
   @override
   Either<Failure, String> validate() {
+    if (value == '') {
+      return left(Failure("category cannot be empty"));
+    }
     return right(value);
   }
 }
