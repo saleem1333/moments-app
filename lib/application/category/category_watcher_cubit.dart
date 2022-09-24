@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +18,7 @@ class CategoryWatcherCubit extends Cubit<CategoryWatcherState> {
     emit(CategoryWatcherState.loading());
     _streamSubscription?.cancel();
     _streamSubscription =
-        _categoryRepository.watchAllCateogories().listen((categoriesOrFailure) {
+        _categoryRepository.watchAllCategories().listen((categoriesOrFailure) {
       emit(categoriesOrFailure.fold(
           (f) => CategoryWatcherState.loadedFailure(f),
           (categories) => CategoryWatcherState.loadedSuccess(categories)));
