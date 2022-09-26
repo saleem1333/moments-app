@@ -87,7 +87,7 @@ class Body extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    context.push("/register");
+                    context.push(Routes.signup);
                   },
                   child: Text("Register")),
               SizedBox(
