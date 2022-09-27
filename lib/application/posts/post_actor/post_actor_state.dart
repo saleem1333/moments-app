@@ -7,6 +7,8 @@ part 'post_actor_state.freezed.dart';
 class PostActorState {
   const factory PostActorState.initial() = _Initial;
   const factory PostActorState.actionLoading() = _ActionLoading;
+  const factory PostActorState.updatedSuccess() = _UpdatedSuccess;
+  const factory PostActorState.updatedFailure(Failure f) = _UpdatedFailure;
   const factory PostActorState.deletedSuccess() = _DeletedSuccess;
   const factory PostActorState.deletedFailure(Failure failure) =
       _DeletedFailure;

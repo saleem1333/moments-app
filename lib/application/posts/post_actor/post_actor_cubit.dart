@@ -11,6 +11,15 @@ class PostActorCubit extends Cubit<PostActorState> {
 
   final PostsRepository _postRepository;
 
+  Future<void> updated(Post post) async {
+    emit(const PostActorState.actionLoading());
+    final Either<Failure, Unit> failureOrSuccess =
+        await _postRepository.updatePost(post);
+
+    emit(failureOrSuccess.fold((f) => PostActorState.updatedFailure(f),
+        (_) => const PostActorState.updatedSuccess()));
+  }
+
   Future<void> deleted(Post post) async {
     emit(const PostActorState.actionLoading());
     final Either<Failure, Unit> failureOrSuccess =

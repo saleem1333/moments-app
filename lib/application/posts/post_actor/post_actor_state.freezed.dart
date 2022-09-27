@@ -20,6 +20,8 @@ mixin _$PostActorState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionLoading,
+    required TResult Function() updatedSuccess,
+    required TResult Function(Failure f) updatedFailure,
     required TResult Function() deletedSuccess,
     required TResult Function(Failure failure) deletedFailure,
   }) =>
@@ -28,6 +30,8 @@ mixin _$PostActorState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
   }) =>
@@ -36,6 +40,8 @@ mixin _$PostActorState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
     required TResult orElse(),
@@ -45,6 +51,8 @@ mixin _$PostActorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionLoading value) actionLoading,
+    required TResult Function(_UpdatedSuccess value) updatedSuccess,
+    required TResult Function(_UpdatedFailure value) updatedFailure,
     required TResult Function(_DeletedSuccess value) deletedSuccess,
     required TResult Function(_DeletedFailure value) deletedFailure,
   }) =>
@@ -53,6 +61,8 @@ mixin _$PostActorState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
   }) =>
@@ -61,6 +71,8 @@ mixin _$PostActorState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
     required TResult orElse(),
@@ -126,6 +138,8 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionLoading,
+    required TResult Function() updatedSuccess,
+    required TResult Function(Failure f) updatedFailure,
     required TResult Function() deletedSuccess,
     required TResult Function(Failure failure) deletedFailure,
   }) {
@@ -137,6 +151,8 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
   }) {
@@ -148,6 +164,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
     required TResult orElse(),
@@ -163,6 +181,8 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionLoading value) actionLoading,
+    required TResult Function(_UpdatedSuccess value) updatedSuccess,
+    required TResult Function(_UpdatedFailure value) updatedFailure,
     required TResult Function(_DeletedSuccess value) deletedSuccess,
     required TResult Function(_DeletedFailure value) deletedFailure,
   }) {
@@ -174,6 +194,8 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
   }) {
@@ -185,6 +207,8 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
     required TResult orElse(),
@@ -243,6 +267,8 @@ class _$_ActionLoading implements _ActionLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionLoading,
+    required TResult Function() updatedSuccess,
+    required TResult Function(Failure f) updatedFailure,
     required TResult Function() deletedSuccess,
     required TResult Function(Failure failure) deletedFailure,
   }) {
@@ -254,6 +280,8 @@ class _$_ActionLoading implements _ActionLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
   }) {
@@ -265,6 +293,8 @@ class _$_ActionLoading implements _ActionLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
     required TResult orElse(),
@@ -280,6 +310,8 @@ class _$_ActionLoading implements _ActionLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionLoading value) actionLoading,
+    required TResult Function(_UpdatedSuccess value) updatedSuccess,
+    required TResult Function(_UpdatedFailure value) updatedFailure,
     required TResult Function(_DeletedSuccess value) deletedSuccess,
     required TResult Function(_DeletedFailure value) deletedFailure,
   }) {
@@ -291,6 +323,8 @@ class _$_ActionLoading implements _ActionLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
   }) {
@@ -302,6 +336,8 @@ class _$_ActionLoading implements _ActionLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
     required TResult orElse(),
@@ -315,6 +351,293 @@ class _$_ActionLoading implements _ActionLoading {
 
 abstract class _ActionLoading implements PostActorState {
   const factory _ActionLoading() = _$_ActionLoading;
+}
+
+/// @nodoc
+abstract class _$$_UpdatedSuccessCopyWith<$Res> {
+  factory _$$_UpdatedSuccessCopyWith(
+          _$_UpdatedSuccess value, $Res Function(_$_UpdatedSuccess) then) =
+      __$$_UpdatedSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UpdatedSuccessCopyWithImpl<$Res>
+    extends _$PostActorStateCopyWithImpl<$Res>
+    implements _$$_UpdatedSuccessCopyWith<$Res> {
+  __$$_UpdatedSuccessCopyWithImpl(
+      _$_UpdatedSuccess _value, $Res Function(_$_UpdatedSuccess) _then)
+      : super(_value, (v) => _then(v as _$_UpdatedSuccess));
+
+  @override
+  _$_UpdatedSuccess get _value => super._value as _$_UpdatedSuccess;
+}
+
+/// @nodoc
+
+class _$_UpdatedSuccess implements _UpdatedSuccess {
+  const _$_UpdatedSuccess();
+
+  @override
+  String toString() {
+    return 'PostActorState.updatedSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UpdatedSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() actionLoading,
+    required TResult Function() updatedSuccess,
+    required TResult Function(Failure f) updatedFailure,
+    required TResult Function() deletedSuccess,
+    required TResult Function(Failure failure) deletedFailure,
+  }) {
+    return updatedSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
+    TResult Function()? deletedSuccess,
+    TResult Function(Failure failure)? deletedFailure,
+  }) {
+    return updatedSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
+    TResult Function()? deletedSuccess,
+    TResult Function(Failure failure)? deletedFailure,
+    required TResult orElse(),
+  }) {
+    if (updatedSuccess != null) {
+      return updatedSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionLoading value) actionLoading,
+    required TResult Function(_UpdatedSuccess value) updatedSuccess,
+    required TResult Function(_UpdatedFailure value) updatedFailure,
+    required TResult Function(_DeletedSuccess value) deletedSuccess,
+    required TResult Function(_DeletedFailure value) deletedFailure,
+  }) {
+    return updatedSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
+    TResult Function(_DeletedSuccess value)? deletedSuccess,
+    TResult Function(_DeletedFailure value)? deletedFailure,
+  }) {
+    return updatedSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
+    TResult Function(_DeletedSuccess value)? deletedSuccess,
+    TResult Function(_DeletedFailure value)? deletedFailure,
+    required TResult orElse(),
+  }) {
+    if (updatedSuccess != null) {
+      return updatedSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdatedSuccess implements PostActorState {
+  const factory _UpdatedSuccess() = _$_UpdatedSuccess;
+}
+
+/// @nodoc
+abstract class _$$_UpdatedFailureCopyWith<$Res> {
+  factory _$$_UpdatedFailureCopyWith(
+          _$_UpdatedFailure value, $Res Function(_$_UpdatedFailure) then) =
+      __$$_UpdatedFailureCopyWithImpl<$Res>;
+  $Res call({Failure f});
+}
+
+/// @nodoc
+class __$$_UpdatedFailureCopyWithImpl<$Res>
+    extends _$PostActorStateCopyWithImpl<$Res>
+    implements _$$_UpdatedFailureCopyWith<$Res> {
+  __$$_UpdatedFailureCopyWithImpl(
+      _$_UpdatedFailure _value, $Res Function(_$_UpdatedFailure) _then)
+      : super(_value, (v) => _then(v as _$_UpdatedFailure));
+
+  @override
+  _$_UpdatedFailure get _value => super._value as _$_UpdatedFailure;
+
+  @override
+  $Res call({
+    Object? f = freezed,
+  }) {
+    return _then(_$_UpdatedFailure(
+      f == freezed
+          ? _value.f
+          : f // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdatedFailure implements _UpdatedFailure {
+  const _$_UpdatedFailure(this.f);
+
+  @override
+  final Failure f;
+
+  @override
+  String toString() {
+    return 'PostActorState.updatedFailure(f: $f)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdatedFailure &&
+            const DeepCollectionEquality().equals(other.f, f));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(f));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UpdatedFailureCopyWith<_$_UpdatedFailure> get copyWith =>
+      __$$_UpdatedFailureCopyWithImpl<_$_UpdatedFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() actionLoading,
+    required TResult Function() updatedSuccess,
+    required TResult Function(Failure f) updatedFailure,
+    required TResult Function() deletedSuccess,
+    required TResult Function(Failure failure) deletedFailure,
+  }) {
+    return updatedFailure(f);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
+    TResult Function()? deletedSuccess,
+    TResult Function(Failure failure)? deletedFailure,
+  }) {
+    return updatedFailure?.call(f);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
+    TResult Function()? deletedSuccess,
+    TResult Function(Failure failure)? deletedFailure,
+    required TResult orElse(),
+  }) {
+    if (updatedFailure != null) {
+      return updatedFailure(f);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ActionLoading value) actionLoading,
+    required TResult Function(_UpdatedSuccess value) updatedSuccess,
+    required TResult Function(_UpdatedFailure value) updatedFailure,
+    required TResult Function(_DeletedSuccess value) deletedSuccess,
+    required TResult Function(_DeletedFailure value) deletedFailure,
+  }) {
+    return updatedFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
+    TResult Function(_DeletedSuccess value)? deletedSuccess,
+    TResult Function(_DeletedFailure value)? deletedFailure,
+  }) {
+    return updatedFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
+    TResult Function(_DeletedSuccess value)? deletedSuccess,
+    TResult Function(_DeletedFailure value)? deletedFailure,
+    required TResult orElse(),
+  }) {
+    if (updatedFailure != null) {
+      return updatedFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdatedFailure implements PostActorState {
+  const factory _UpdatedFailure(final Failure f) = _$_UpdatedFailure;
+
+  Failure get f;
+  @JsonKey(ignore: true)
+  _$$_UpdatedFailureCopyWith<_$_UpdatedFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -360,6 +683,8 @@ class _$_DeletedSuccess implements _DeletedSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionLoading,
+    required TResult Function() updatedSuccess,
+    required TResult Function(Failure f) updatedFailure,
     required TResult Function() deletedSuccess,
     required TResult Function(Failure failure) deletedFailure,
   }) {
@@ -371,6 +696,8 @@ class _$_DeletedSuccess implements _DeletedSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
   }) {
@@ -382,6 +709,8 @@ class _$_DeletedSuccess implements _DeletedSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
     required TResult orElse(),
@@ -397,6 +726,8 @@ class _$_DeletedSuccess implements _DeletedSuccess {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionLoading value) actionLoading,
+    required TResult Function(_UpdatedSuccess value) updatedSuccess,
+    required TResult Function(_UpdatedFailure value) updatedFailure,
     required TResult Function(_DeletedSuccess value) deletedSuccess,
     required TResult Function(_DeletedFailure value) deletedFailure,
   }) {
@@ -408,6 +739,8 @@ class _$_DeletedSuccess implements _DeletedSuccess {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
   }) {
@@ -419,6 +752,8 @@ class _$_DeletedSuccess implements _DeletedSuccess {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
     required TResult orElse(),
@@ -501,6 +836,8 @@ class _$_DeletedFailure implements _DeletedFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() actionLoading,
+    required TResult Function() updatedSuccess,
+    required TResult Function(Failure f) updatedFailure,
     required TResult Function() deletedSuccess,
     required TResult Function(Failure failure) deletedFailure,
   }) {
@@ -512,6 +849,8 @@ class _$_DeletedFailure implements _DeletedFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
   }) {
@@ -523,6 +862,8 @@ class _$_DeletedFailure implements _DeletedFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? actionLoading,
+    TResult Function()? updatedSuccess,
+    TResult Function(Failure f)? updatedFailure,
     TResult Function()? deletedSuccess,
     TResult Function(Failure failure)? deletedFailure,
     required TResult orElse(),
@@ -538,6 +879,8 @@ class _$_DeletedFailure implements _DeletedFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ActionLoading value) actionLoading,
+    required TResult Function(_UpdatedSuccess value) updatedSuccess,
+    required TResult Function(_UpdatedFailure value) updatedFailure,
     required TResult Function(_DeletedSuccess value) deletedSuccess,
     required TResult Function(_DeletedFailure value) deletedFailure,
   }) {
@@ -549,6 +892,8 @@ class _$_DeletedFailure implements _DeletedFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
   }) {
@@ -560,6 +905,8 @@ class _$_DeletedFailure implements _DeletedFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_ActionLoading value)? actionLoading,
+    TResult Function(_UpdatedSuccess value)? updatedSuccess,
+    TResult Function(_UpdatedFailure value)? updatedFailure,
     TResult Function(_DeletedSuccess value)? deletedSuccess,
     TResult Function(_DeletedFailure value)? deletedFailure,
     required TResult orElse(),
