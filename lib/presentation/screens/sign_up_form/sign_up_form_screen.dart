@@ -35,6 +35,7 @@ class Body extends StatelessWidget {
         state.authFailureOrSuccess?.fold(
             (f) => f.when(
                 emailAlreadyInUse: () => log("Email in use"),
+                usernameAlreadyInUse: () => log("Username in use"),
                 weakPassword: () => log("Weak password"),
                 invalidEmailAndPasswordCombination: () => log("unreachable"),
                 accountDisabled: () => log("Account diseabled"),
