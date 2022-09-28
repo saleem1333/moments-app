@@ -345,7 +345,8 @@ DerivedData/
 bin/
 gen/
 out/
-
+*.freezed.dart
+*.g.dart
 # Gradle files
 .gradle/
 build/
