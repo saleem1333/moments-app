@@ -40,7 +40,7 @@ void registerInjections() {
       () => SignInFormCubit(getIt<AuthFacade>()));
 
   getIt.registerFactory<SignUpFormCubit>(
-      () => SignUpFormCubit(getIt<AuthFacade>(), getIt<AppUserRepository>()));
+      () => SignUpFormCubit(getIt<AppUserRepository>()));
 
   getIt.registerFactory<PostWatcherCubit>(
       () => PostWatcherCubit(getIt<PostsRepository>()));
