@@ -10,5 +10,6 @@ class AppUser with _$AppUser {
       {required String id,
       required Username username,
       required EmailAddress emailAddress,
-      required Password password}) = _AppUser;
+      required Password password,
+      required UserProfileImage? userProfileImage}) = _AppUser;
 }

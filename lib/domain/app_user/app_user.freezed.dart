@@ -20,6 +20,7 @@ mixin _$AppUser {
   Username get username => throw _privateConstructorUsedError;
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
+  UserProfileImage? get userProfileImage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
@@ -33,7 +34,8 @@ abstract class $AppUserCopyWith<$Res> {
       {String id,
       Username username,
       EmailAddress emailAddress,
-      Password password});
+      Password password,
+      UserProfileImage? userProfileImage});
 }
 
 /// @nodoc
@@ -50,6 +52,7 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
     Object? username = freezed,
     Object? emailAddress = freezed,
     Object? password = freezed,
+    Object? userProfileImage = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -68,6 +71,10 @@ class _$AppUserCopyWithImpl<$Res> implements $AppUserCopyWith<$Res> {
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
+      userProfileImage: userProfileImage == freezed
+          ? _value.userProfileImage
+          : userProfileImage // ignore: cast_nullable_to_non_nullable
+              as UserProfileImage?,
     ));
   }
 }
@@ -82,7 +89,8 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       {String id,
       Username username,
       EmailAddress emailAddress,
-      Password password});
+      Password password,
+      UserProfileImage? userProfileImage});
 }
 
 /// @nodoc
@@ -100,6 +108,7 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
     Object? username = freezed,
     Object? emailAddress = freezed,
     Object? password = freezed,
+    Object? userProfileImage = freezed,
   }) {
     return _then(_$_AppUser(
       id: id == freezed
@@ -118,6 +127,10 @@ class __$$_AppUserCopyWithImpl<$Res> extends _$AppUserCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
+      userProfileImage: userProfileImage == freezed
+          ? _value.userProfileImage
+          : userProfileImage // ignore: cast_nullable_to_non_nullable
+              as UserProfileImage?,
     ));
   }
 }
@@ -129,7 +142,8 @@ class _$_AppUser implements _AppUser {
       {required this.id,
       required this.username,
       required this.emailAddress,
-      required this.password});
+      required this.password,
+      required this.userProfileImage});
 
   @override
   final String id;
@@ -139,10 +153,12 @@ class _$_AppUser implements _AppUser {
   final EmailAddress emailAddress;
   @override
   final Password password;
+  @override
+  final UserProfileImage? userProfileImage;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, username: $username, emailAddress: $emailAddress, password: $password)';
+    return 'AppUser(id: $id, username: $username, emailAddress: $emailAddress, password: $password, userProfileImage: $userProfileImage)';
   }
 
   @override
@@ -154,7 +170,9 @@ class _$_AppUser implements _AppUser {
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality()
                 .equals(other.emailAddress, emailAddress) &&
-            const DeepCollectionEquality().equals(other.password, password));
+            const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality()
+                .equals(other.userProfileImage, userProfileImage));
   }
 
   @override
@@ -163,7 +181,8 @@ class _$_AppUser implements _AppUser {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(emailAddress),
-      const DeepCollectionEquality().hash(password));
+      const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(userProfileImage));
 
   @JsonKey(ignore: true)
   @override
@@ -176,7 +195,8 @@ abstract class _AppUser implements AppUser {
       {required final String id,
       required final Username username,
       required final EmailAddress emailAddress,
-      required final Password password}) = _$_AppUser;
+      required final Password password,
+      required final UserProfileImage? userProfileImage}) = _$_AppUser;
 
   @override
   String get id;
@@ -186,6 +206,8 @@ abstract class _AppUser implements AppUser {
   EmailAddress get emailAddress;
   @override
   Password get password;
+  @override
+  UserProfileImage? get userProfileImage;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

@@ -13,6 +13,7 @@ class SignUpFormState with _$SignUpFormState {
           {required EmailAddress emailAddress,
           required Username username,
           required Password password,
+          required UserProfileImage? userProfileImage,
           required bool isSubmiting,
           required bool showErrors,
           required Either<AuthFailure, Unit>? authFailureOrSuccess}) =
@@ -22,6 +23,7 @@ class SignUpFormState with _$SignUpFormState {
       emailAddress: EmailAddress(''),
       username: Username(''),
       password: Password(''),
+      userProfileImage: null,
       isSubmiting: false,
       showErrors: false,
       authFailureOrSuccess: null);

@@ -19,6 +19,7 @@ mixin _$SignUpFormState {
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
   Username get username => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
+  UserProfileImage? get userProfileImage => throw _privateConstructorUsedError;
   bool get isSubmiting => throw _privateConstructorUsedError;
   bool get showErrors => throw _privateConstructorUsedError;
   Either<AuthFailure, Unit>? get authFailureOrSuccess =>
@@ -38,6 +39,7 @@ abstract class $SignUpFormStateCopyWith<$Res> {
       {EmailAddress emailAddress,
       Username username,
       Password password,
+      UserProfileImage? userProfileImage,
       bool isSubmiting,
       bool showErrors,
       Either<AuthFailure, Unit>? authFailureOrSuccess});
@@ -57,6 +59,7 @@ class _$SignUpFormStateCopyWithImpl<$Res>
     Object? emailAddress = freezed,
     Object? username = freezed,
     Object? password = freezed,
+    Object? userProfileImage = freezed,
     Object? isSubmiting = freezed,
     Object? showErrors = freezed,
     Object? authFailureOrSuccess = freezed,
@@ -74,6 +77,10 @@ class _$SignUpFormStateCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
+      userProfileImage: userProfileImage == freezed
+          ? _value.userProfileImage
+          : userProfileImage // ignore: cast_nullable_to_non_nullable
+              as UserProfileImage?,
       isSubmiting: isSubmiting == freezed
           ? _value.isSubmiting
           : isSubmiting // ignore: cast_nullable_to_non_nullable
@@ -101,6 +108,7 @@ abstract class _$$_SignUpFormStateCopyWith<$Res>
       {EmailAddress emailAddress,
       Username username,
       Password password,
+      UserProfileImage? userProfileImage,
       bool isSubmiting,
       bool showErrors,
       Either<AuthFailure, Unit>? authFailureOrSuccess});
@@ -122,6 +130,7 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
     Object? emailAddress = freezed,
     Object? username = freezed,
     Object? password = freezed,
+    Object? userProfileImage = freezed,
     Object? isSubmiting = freezed,
     Object? showErrors = freezed,
     Object? authFailureOrSuccess = freezed,
@@ -139,6 +148,10 @@ class __$$_SignUpFormStateCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
+      userProfileImage: userProfileImage == freezed
+          ? _value.userProfileImage
+          : userProfileImage // ignore: cast_nullable_to_non_nullable
+              as UserProfileImage?,
       isSubmiting: isSubmiting == freezed
           ? _value.isSubmiting
           : isSubmiting // ignore: cast_nullable_to_non_nullable
@@ -162,6 +175,7 @@ class _$_SignUpFormState implements _SignUpFormState {
       {required this.emailAddress,
       required this.username,
       required this.password,
+      required this.userProfileImage,
       required this.isSubmiting,
       required this.showErrors,
       required this.authFailureOrSuccess});
@@ -173,6 +187,8 @@ class _$_SignUpFormState implements _SignUpFormState {
   @override
   final Password password;
   @override
+  final UserProfileImage? userProfileImage;
+  @override
   final bool isSubmiting;
   @override
   final bool showErrors;
@@ -181,7 +197,7 @@ class _$_SignUpFormState implements _SignUpFormState {
 
   @override
   String toString() {
-    return 'SignUpFormState(emailAddress: $emailAddress, username: $username, password: $password, isSubmiting: $isSubmiting, showErrors: $showErrors, authFailureOrSuccess: $authFailureOrSuccess)';
+    return 'SignUpFormState(emailAddress: $emailAddress, username: $username, password: $password, userProfileImage: $userProfileImage, isSubmiting: $isSubmiting, showErrors: $showErrors, authFailureOrSuccess: $authFailureOrSuccess)';
   }
 
   @override
@@ -193,6 +209,8 @@ class _$_SignUpFormState implements _SignUpFormState {
                 .equals(other.emailAddress, emailAddress) &&
             const DeepCollectionEquality().equals(other.username, username) &&
             const DeepCollectionEquality().equals(other.password, password) &&
+            const DeepCollectionEquality()
+                .equals(other.userProfileImage, userProfileImage) &&
             const DeepCollectionEquality()
                 .equals(other.isSubmiting, isSubmiting) &&
             const DeepCollectionEquality()
@@ -207,6 +225,7 @@ class _$_SignUpFormState implements _SignUpFormState {
       const DeepCollectionEquality().hash(emailAddress),
       const DeepCollectionEquality().hash(username),
       const DeepCollectionEquality().hash(password),
+      const DeepCollectionEquality().hash(userProfileImage),
       const DeepCollectionEquality().hash(isSubmiting),
       const DeepCollectionEquality().hash(showErrors),
       const DeepCollectionEquality().hash(authFailureOrSuccess));
@@ -222,6 +241,7 @@ abstract class _SignUpFormState implements SignUpFormState {
           {required final EmailAddress emailAddress,
           required final Username username,
           required final Password password,
+          required final UserProfileImage? userProfileImage,
           required final bool isSubmiting,
           required final bool showErrors,
           required final Either<AuthFailure, Unit>? authFailureOrSuccess}) =
@@ -233,6 +253,8 @@ abstract class _SignUpFormState implements SignUpFormState {
   Username get username;
   @override
   Password get password;
+  @override
+  UserProfileImage? get userProfileImage;
   @override
   bool get isSubmiting;
   @override
