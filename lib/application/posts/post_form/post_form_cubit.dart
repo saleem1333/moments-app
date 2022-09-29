@@ -14,8 +14,6 @@ class PostFormCubit extends Cubit<PostFormState> {
 
   final PostsRepository _repository;
   
-  PostTags? previousPostTags;
-
   void postBodyChanged(String postBodyStr) {
     emit(state.copyWith(
         postBody: PostBody(postBodyStr), actionFailureOrSuccess: null));
@@ -56,9 +54,4 @@ class PostFormCubit extends Cubit<PostFormState> {
     }
   }
 
-  @override
-  void onChange(Change<PostFormState> change) {
-    super.onChange(change);
-    previousPostTags = change.currentState.tags;
-  }
 }
