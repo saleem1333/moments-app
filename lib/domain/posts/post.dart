@@ -26,8 +26,8 @@ class Post {
 }
 
 class PostBody extends ValueObject<String> {
-  static const int minSize = 2;
-  static const int maxSize = 200;
+  static const int minSize = 10;
+  static const int maxSize = 10000;
 
   PostBody(String value) : super(value);
 
