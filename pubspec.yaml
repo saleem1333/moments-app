@@ -47,6 +47,14 @@ dependencies:
   uuid: ^3.0.6
   email_validator: ^2.1.17
   textfield_tags: ^2.0.2
+  device_preview: ^1.1.0
+  permission_handler: ^10.0.2
+  image_cropper: ^3.0.0
+  image_picker: ^0.8.5+3
+  flutter_svg: ^1.1.5
+  extended_image: ^6.3.1
+  menu_button: ^1.4.2+1
+  flutter_spinkit: ^5.1.0
 
 
 dev_dependencies:
