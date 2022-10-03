@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 36 36">
+  <g class="facebook">
+    <path fill="url(#a)" d="M18 3C9.716 3 3 9.716 3 18c0 8.285 6.716 15 15 15 8.285 0 15-6.715 15-15 0-8.284-6.715-15-15-15Z" class="Vector"/>
+    <path fill="#fff" d="M20.03 21.976h3.882l.61-3.944H20.03v-2.155c0-1.638.536-3.09 2.068-3.09h2.462V9.344c-.433-.058-1.348-.186-3.076-.186-3.61 0-5.727 1.907-5.727 6.25v2.624h-3.712v3.944h3.71v10.839c.736.11 1.48.184 2.245.184.69 0 1.365-.063 2.03-.153v-10.87Z" class="Vector"/>
+  </g>
+  <defs>
+    <linearGradient id="a" x1="7.495" x2="30.461" y1="7.495" y2="30.461" class="a" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2AA4F4"/>
+      <stop offset="1" stop-color="#007AD9"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -52,3 +52,17 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  assets:
+    - assets/svg/vectors/
+    - assets/svg/sign_in/
+    
+  fonts:
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Black.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
+        - asset: assets/fonts/Tajawal-ExtraBold.ttf
+        - asset: assets/fonts/Tajawal-ExtraLight.ttf
+        - asset: assets/fonts/Tajawal-Light.ttf
+        - asset: assets/fonts/Tajawal-Medium.ttf
+        - asset: assets/fonts/Tajawal-Regular.ttf
