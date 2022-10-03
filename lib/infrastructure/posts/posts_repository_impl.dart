@@ -43,7 +43,7 @@ class PostsRepositoryImpl implements PostsRepository {
 
   /// NOTE: THIS METHOD HAS NOT BEEN TESTED YET
   @override
-  Stream<Either<Failure, List<Post>>> watchAllPostsByCateogory(
+  Stream<Either<Failure, List<Post>>> watchAllPostsByCategory(
       Category category) async* {
     final fetchedCategory =
         await _cateogoryRepository.findCategoryByName(category.name);

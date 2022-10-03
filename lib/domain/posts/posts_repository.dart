@@ -8,7 +8,7 @@ abstract class PostsRepository {
   /// watch all posts of all users
   Stream<Either<Failure, List<Post>>> watchAllPosts();
 
-  Stream<Either<Failure, List<Post>>> watchAllPostsByCateogory(Category cateogory);
+  Stream<Either<Failure, List<Post>>> watchAllPostsByCategory(Category cateogory);
   Stream<Either<Failure, List<Post>>> watchAllPostsByTags(PostTags tags);
 
   /// watch posts for a specific user
