@@ -2,9 +2,9 @@ import 'package:go_router/go_router.dart';
 
 import '../presentation/screens/posts/post_form_screen.dart';
 import '../presentation/screens/posts/posts_screen.dart';
-import '../presentation/screens/sign_in_form/sign_in_form_screen.dart';
-import '../presentation/screens/sign_up_form/sign_up_form_screen.dart';
 import '../presentation/screens/splash/splash_screen.dart';
+import 'presentation/screens/auth/sign_in_form/sign_in_form_screen.dart';
+import 'presentation/screens/auth/sign_up_form/sign_up_form_screen.dart';
 
 final GoRouter router =
     GoRouter(initialLocation: Routes.splash, routes: <GoRoute>[
