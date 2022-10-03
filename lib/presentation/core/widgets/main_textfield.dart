@@ -11,7 +11,7 @@ class MainTextfield extends StatelessWidget {
     this.suffixIcon,
     this.validator,
     this.keyboardType = TextInputType.text,
-    this.isPassword = true,
+    this.isPassword = false,
     this.enabled = true,
     this.error = false,
     this.smallSuffixIcon = false,
@@ -99,7 +99,7 @@ class MainTextfield extends StatelessWidget {
               ? null
               : const EdgeInsets.symmetric(horizontal: 16.0),
         ),
-        obscureText: !isPassword,
+        obscureText: isPassword,
         enableSuggestions: isPassword,
         autocorrect: isPassword,
       ),
