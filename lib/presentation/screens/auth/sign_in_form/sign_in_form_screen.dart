@@ -48,7 +48,9 @@ class Body extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.all(size.width * .025),
-                child: SvgPicture.asset(SvgPaths.welcome),
+                child: SvgPicture.asset(
+                  SvgPaths.welcome,
+                ),
               ),
               Text(
                 "Log In",
@@ -57,28 +59,6 @@ class Body extends StatelessWidget {
                   fontSize: size.width * .075,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularSvgButton(
-                    size: size,
-                    svgPath: SvgPaths.google,
-                    onPressed: () {},
-                  ),
-                  CircularSvgButton(
-                    size: size,
-                    svgPath: SvgPaths.facebook,
-                    onPressed: () {},
-                  ),
-                  CircularSvgButton(
-                    size: size,
-                    svgPath: SvgPaths.apple,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              SizedBox(height: size.width * .06),
-              TextDivider(text: "Or continue with"),
               SizedBox(height: size.width * .06),
               Text(
                 "Email",
@@ -173,6 +153,29 @@ class Body extends StatelessWidget {
                         fontSize: size.width * .035,
                       ),
                     ),
+                  ),
+                ],
+              ),
+              SizedBox(height: size.width * .06),
+              TextDivider(text: "Or continue with"),
+              SizedBox(height: size.width * .06),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularSvgButton(
+                    size: size,
+                    svgPath: SvgPaths.google,
+                    onPressed: () {},
+                  ),
+                  CircularSvgButton(
+                    size: size,
+                    svgPath: SvgPaths.facebook,
+                    onPressed: () {},
+                  ),
+                  CircularSvgButton(
+                    size: size,
+                    svgPath: SvgPaths.apple,
+                    onPressed: () {},
                   ),
                 ],
               ),
