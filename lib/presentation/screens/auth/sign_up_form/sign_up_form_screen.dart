@@ -138,22 +138,7 @@ class Body extends StatelessWidget {
                     /// NOT YET SUPPORTED
                     return null;
                   }),
-              SizedBox(height: size.width * .02),
-              Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {},
-                    activeColor: AppColors.mainColor,
-                  ),
-                  Text(
-                    "Remeber me",
-                    style: TextStyle(
-                      fontSize: size.width * .038,
-                    ),
-                  ),
-                ],
-              ),
+              SizedBox(height: size.width * .09),
               MainButton(
                 text: "Sign up",
                 color: AppColors.mainColor,
