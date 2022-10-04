@@ -117,7 +117,7 @@ class Body extends StatelessWidget {
                     activeColor: AppColors.mainColor,
                   ),
                   Text(
-                    "Remeber me",
+                    "Remember me",
                     style: TextStyle(
                       fontSize: size.width * .038,
                     ),
