@@ -99,7 +99,9 @@ class Body extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.push(Routes.forgetPassword);
+                  },
                   child: Text(
                     "Forgot Password?",
                     style: AppTextStyles.styleWeight700(
