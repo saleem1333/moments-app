@@ -1,15 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:moments_app/application/auth/sign_in_form/sign_in_form_cubit.dart';
 import 'package:moments_app/presentation/core/config/svg_paths.dart';
 import 'package:moments_app/presentation/core/widgets/circular_svg_button.dart';
 import 'package:moments_app/presentation/core/widgets/main_textfield.dart';
 
 import '../../../../application/auth/sign_up_form/sign_up_form_cubit.dart';
-import '../../../../application/auth/sign_up_form/sign_up_form_state.dart';
 import '../../../../injections.dart';
 import '../../../core/config/app_colors.dart';
 import '../../../core/config/app_text_styles.dart';
@@ -131,13 +127,15 @@ class Body extends StatelessWidget {
               MainTextfield(
                   hint: "Enter Confirm Password",
                   isPassword: true,
-                  onChanged: (value) {
-                    // NOT YET SUPPORTED
-                  },
-                  validator: (_) {
-                    /// NOT YET SUPPORTED
-                    return null;
-                  }),
+                  onChanged: (value) => context
+                      .read<SignUpFormCubit>()
+                      .confirmationPasswordChanged(value),
+                  validator: (_) => context
+                      .read<SignUpFormCubit>()
+                      .state
+                      .confirmationPassword
+                      .failureOrValue
+                      .fold((f) => f.message, (_) => null)),
               SizedBox(height: size.width * .09),
               MainButton(
                 text: "Sign up",
