@@ -13,7 +13,7 @@ class PostFormCubit extends Cubit<PostFormState> {
   PostFormCubit(this._repository) : super(PostFormState.initial());
 
   final PostsRepository _repository;
-  
+
   void postBodyChanged(String postBodyStr) {
     emit(state.copyWith(
         postBody: PostBody(postBodyStr), actionFailureOrSuccess: null));
@@ -46,12 +46,13 @@ class PostFormCubit extends Cubit<PostFormState> {
               appUser: null,
               content: state.postBody,
               createdAt: null,
-              tags: state.tags));
+              tags: state.tags,
+              votes: PostVotes(const []),
+              comments: PostComments(const [])));
       emit(state.copyWith(
           showErrors: false,
           actionFailureOrSuccess: failureOrSuccess,
           isSubmiting: false));
     }
   }
-
 }

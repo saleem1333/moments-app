@@ -6,7 +6,6 @@ part 'auth_failure.freezed.dart';
 class AuthFailure with _$AuthFailure {
   const factory AuthFailure.emailAlreadyInUse() = _EmailAlreadyInUse;
   const factory AuthFailure.usernameAlreadyInUse() = _UsernameAlreadyInUse;
-
   const factory AuthFailure.weakPassword() = _WeakPassword;
   const factory AuthFailure.invalidEmailAndPasswordCombination() =
       _InvalidEmailAndPasswordCombination;
