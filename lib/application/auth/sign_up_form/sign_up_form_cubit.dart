@@ -24,7 +24,16 @@ class SignUpFormCubit extends Cubit<SignUpFormState> {
   }
 
   void passwordChanged(String passwordStr) {
-    emit(state.copyWith(password: Password(passwordStr)));
+    emit(state.copyWith(
+        password: Password(passwordStr),
+        confirmationPassword: state.confirmationPassword
+            .copyWith(password: Password(passwordStr))));
+  }
+
+  void confirmationPasswordChanged(String confirmationPasswordStr) {
+    emit(state.copyWith(
+        confirmationPassword: state.confirmationPassword
+            .copyWith(value: confirmationPasswordStr)));
   }
 
   void userProfileImageChanged(Uint8List bytes) {
@@ -34,7 +43,8 @@ class SignUpFormCubit extends Cubit<SignUpFormState> {
   Future<void> submit() async {
     if (state.emailAddress.isValid() &&
         state.username.isValid() &&
-        state.password.isValid() && state.userProfileImage == null || state.userProfileImage!.isValid()) {
+        state.password.isValid() &&
+        (state.userProfileImage == null || state.userProfileImage!.isValid())) {
       emit(state.copyWith(
           authFailureOrSuccess: null, isSubmiting: true, showErrors: false));
 

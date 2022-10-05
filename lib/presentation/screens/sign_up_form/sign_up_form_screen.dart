@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moments_app/application/auth/sign_in_form/sign_in_form_cubit.dart';
 
 import '../../../application/auth/sign_up_form/sign_up_form_cubit.dart';
 import '../../../application/auth/sign_up_form/sign_up_form_state.dart';
@@ -95,6 +94,24 @@ class Body extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: "Password",
+                    border: OutlineInputBorder(),
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                  validator: (value) => context
+                      .read<SignUpFormCubit>()
+                      .state
+                      .confirmationPassword
+                      .failureOrValue
+                      .fold((f) => f.message, (r) => null),
+                  onChanged: (value) => context
+                      .read<SignUpFormCubit>()
+                      .confirmationPasswordChanged(value),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: "Confirmation Password",
                     border: OutlineInputBorder(),
                   )),
               ElevatedButton(

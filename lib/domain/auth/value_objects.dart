@@ -8,7 +8,6 @@ class EmailAddress extends ValueObject<String> {
 
   @override
   Either<Failure, String> validate() {
-
     if (EmailValidator.validate(value)) {
       return right(value);
     }
@@ -26,5 +25,24 @@ class Password extends ValueObject<String> {
     }
 
     return left(Failure("Password is too short"));
+  }
+}
+
+class ConfirmationPassword extends ValueObject<String> {
+  ConfirmationPassword(String value, {required this.password}) : super(value);
+
+  final Password password;
+  @override
+  Either<Failure, String> validate() {
+    if (value != password.value) {
+      return left(Failure("Password doesn't match"));
+    }
+
+    return right(value);
+  }
+
+  ConfirmationPassword copyWith({String? value, Password? password}) {
+    return ConfirmationPassword(value ?? this.value,
+        password: password ?? this.password);
   }
 }
