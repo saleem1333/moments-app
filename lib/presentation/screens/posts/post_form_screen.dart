@@ -27,13 +27,13 @@ class PostFormScreen extends StatelessWidget {
               getIt<CategoryWatcherCubit>()..startWatchCategories(),
         ),
       ],
-      child: Body(),
+      child: _Body(),
     ));
   }
 }
 
-class Body extends HookWidget {
-  const Body({Key? key}) : super(key: key);
+class _Body extends HookWidget {
+  const _Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
