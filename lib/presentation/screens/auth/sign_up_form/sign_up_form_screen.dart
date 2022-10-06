@@ -20,14 +20,14 @@ class SignUpFormScreen extends StatelessWidget {
     return BlocProvider<SignUpFormCubit>(
       create: (context) => getIt<SignUpFormCubit>(),
       child: Scaffold(
-        body: Body(),
+        body: _Body(),
       ),
     );
   }
 }
 
-class Body extends StatelessWidget {
-  const Body({
+class _Body extends StatelessWidget {
+  const _Body({
     Key? key,
   }) : super(key: key);
 

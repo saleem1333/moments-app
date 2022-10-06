@@ -15,12 +15,12 @@ class ForgetPasswordFormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Body());
+    return Scaffold(body: _Body());
   }
 }
 
-class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+class _Body extends StatelessWidget {
+  const _Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

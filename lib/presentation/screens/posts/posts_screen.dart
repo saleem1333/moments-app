@@ -26,14 +26,14 @@ class PostsScreen extends StatelessWidget {
       body: BlocProvider<PostWatcherCubit>(
         create: (context) =>
             PostWatcherCubit(getIt<PostsRepository>())..watchAllStarted(),
-        child: Body(),
+        child: _Body(),
       ),
     );
   }
 }
 
-class Body extends StatelessWidget {
-  const Body({
+class _Body extends StatelessWidget {
+  const _Body({
     Key? key,
   }) : super(key: key);
 
