@@ -5,14 +5,17 @@ import '../category/category.dart';
 import '../core/failure.dart';
 
 abstract class PostsRepository {
-  /// watch all posts of all users
+  /// fetch all posts of all users
   Future<Either<Failure, List<Post>>> fetchAllPosts();
 
+  /// fetch posts by category
   Future<Either<Failure, List<Post>>> fetchAllPostsByCategory(
       Category cateogory);
+
+  /// fetch posts by the given tags   
   Future<Either<Failure, List<Post>>> fetchAllPostsByTags(PostTags tags);
 
-  /// watch posts for a specific user
+  /// fetch posts for a specific user
   Future<Either<Failure, List<Post>>> fetchAllPostsByUserId(String id);
 
   /// create new post
