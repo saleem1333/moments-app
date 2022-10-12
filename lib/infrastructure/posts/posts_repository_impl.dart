@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:moments_app/domain/app_user/app_user_repository.dart';
-import 'package:moments_app/domain/category/category.dart';
-import 'package:moments_app/domain/category/category_repository.dart';
+import 'package:moments_app/domain/categories/category.dart';
+import 'package:moments_app/domain/categories/category_repository.dart';
 import 'package:moments_app/domain/core/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:moments_app/infrastructure/core/firestore_collections.dart';

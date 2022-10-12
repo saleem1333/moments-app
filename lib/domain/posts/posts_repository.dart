@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:moments_app/domain/posts/post.dart';
 
-import '../category/category.dart';
+import '../categories/category.dart';
 import '../core/failure.dart';
 
 abstract class PostsRepository {

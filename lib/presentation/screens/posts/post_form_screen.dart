@@ -3,12 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:moments_app/application/category/category_watcher_cubit.dart';
-import 'package:moments_app/application/category/category_watcher_state.dart';
+import 'package:moments_app/application/categories/categories_fetcher_cubit.dart';
 import 'package:moments_app/application/posts/post_form/post_form_cubit.dart';
 import 'package:moments_app/injections.dart';
 import 'package:textfield_tags/textfield_tags.dart';
 
+import '../../../application/categories/categories_fetcher_state.dart';
 import '../../../application/posts/post_form/post_form_state.dart';
 
 class PostFormScreen extends StatelessWidget {
@@ -22,9 +22,9 @@ class PostFormScreen extends StatelessWidget {
         BlocProvider<PostFormCubit>(
           create: (context) => getIt<PostFormCubit>(),
         ),
-        BlocProvider<CategoryWatcherCubit>(
+        BlocProvider<CategoriesFetcherCubit>(
           create: (context) =>
-              getIt<CategoryWatcherCubit>()..startWatchCategories(),
+              getIt<CategoriesFetcherCubit>()..fetchAllCategories(),
         ),
       ],
       child: _Body(),
@@ -159,7 +159,7 @@ class _Body extends HookWidget {
                 SizedBox(
                   height: 10,
                 ),
-                BlocBuilder<CategoryWatcherCubit, CategoryWatcherState>(
+                BlocBuilder<CategoriesFetcherCubit, CategoriesFetcherState>(
                   builder: (context, state) {
                     return state.maybeWhen(
                       loadedSuccess: (categories) {

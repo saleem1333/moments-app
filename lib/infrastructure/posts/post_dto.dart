@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:moments_app/infrastructure/category/category_dto.dart';
 import 'package:moments_app/infrastructure/posts/vote_dto.dart';
 import 'package:moments_app/infrastructure/tags/tag_dto.dart';
 
 import '../../domain/app_user/app_user.dart';
 import '../../domain/posts/post.dart';
+import '../categories/category_dto.dart';
 import 'comment_dto.dart';
 part 'post_dto.g.dart';
 part 'post_dto.freezed.dart';
