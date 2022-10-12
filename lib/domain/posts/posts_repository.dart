@@ -6,14 +6,14 @@ import '../core/failure.dart';
 
 abstract class PostsRepository {
   /// watch all posts of all users
-  Stream<Either<Failure, List<Post>>> watchAllPosts();
+  Future<Either<Failure, List<Post>>> fetchAllPosts();
 
-  Stream<Either<Failure, List<Post>>> watchAllPostsByCategory(
+  Future<Either<Failure, List<Post>>> fetchAllPostsByCategory(
       Category cateogory);
-  Stream<Either<Failure, List<Post>>> watchAllPostsByTags(PostTags tags);
+  Future<Either<Failure, List<Post>>> fetchAllPostsByTags(PostTags tags);
 
   /// watch posts for a specific user
-  Stream<Either<Failure, List<Post>>> watchAllPostsByUserId(String id);
+  Future<Either<Failure, List<Post>>> fetchAllPostsByUserId(String id);
 
   /// create new post
   Future<Either<Failure, Unit>> createPost(Post post);

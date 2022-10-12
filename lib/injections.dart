@@ -6,7 +6,7 @@ import 'package:moments_app/application/auth/sign_in_form/sign_in_form_cubit.dar
 import 'package:moments_app/application/auth/sign_up_form/sign_up_form_cubit.dart';
 import 'package:moments_app/application/category/category_watcher_cubit.dart';
 import 'package:moments_app/application/posts/post_form/post_form_cubit.dart';
-import 'package:moments_app/application/posts/post_watcher/post_watcher_cubit.dart';
+import 'package:moments_app/application/posts/posts_fetcher/posts_fetcher_cubit.dart';
 import 'package:moments_app/domain/app_user/app_user_repository.dart';
 import 'package:moments_app/domain/auth/auth_facade.dart';
 import 'package:moments_app/domain/category/category_repository.dart';
@@ -42,8 +42,8 @@ void registerInjections() {
   getIt.registerFactory<SignUpFormCubit>(
       () => SignUpFormCubit(getIt<AppUserRepository>()));
 
-  getIt.registerFactory<PostWatcherCubit>(
-      () => PostWatcherCubit(getIt<PostsRepository>()));
+  getIt.registerFactory<PostsFetcherCubit>(
+      () => PostsFetcherCubit(getIt<PostsRepository>()));
 
   getIt.registerFactory<PostFormCubit>(
       () => PostFormCubit(getIt<PostsRepository>()));

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moments_app/application/auth/auth_cubit.dart';
-import 'package:moments_app/application/posts/post_watcher/post_watcher_cubit.dart';
-import 'package:moments_app/domain/posts/posts_repository.dart';
+import 'package:moments_app/application/posts/posts_fetcher/posts_fetcher_cubit.dart';
 import 'package:moments_app/injections.dart';
 
 import '../../../routes.dart';
@@ -23,9 +22,8 @@ class PostsScreen extends StatelessWidget {
                     .then((_) => context.go(Routes.signIn));
               },
               icon: Icon(Icons.logout))),
-      body: BlocProvider<PostWatcherCubit>(
-        create: (context) =>
-            PostWatcherCubit(getIt<PostsRepository>())..watchAllStarted(),
+      body: BlocProvider<PostsFetcherCubit>(
+        create: (context) => getIt<PostsFetcherCubit>()..fetchAllPosts(),
         child: _Body(),
       ),
     );
@@ -39,7 +37,7 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<PostWatcherCubit>().state;
+    final state = context.watch<PostsFetcherCubit>().state;
     final user = context
         .read<AuthCubit>()
         .user; // we're not using watch here because we don't actually need to listen for changes
