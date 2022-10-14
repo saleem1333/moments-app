@@ -41,7 +41,6 @@ class PostsRepositoryImpl implements PostsRepository {
             snapshot.fold((l) => left(l), (r) async => right(await r)));
   }
 
-  /// NOTE: THIS METHOD HAS NOT BEEN TESTED YET
   @override
   Stream<Either<Failure, List<Post>>> watchAllPostsByCategory(
       Category category) async* {
@@ -60,7 +59,7 @@ class PostsRepositoryImpl implements PostsRepository {
                   Stream.fromIterable(snapshot.docs).asyncMap((doc) async {
                 // getting the user of the post
                 final user = await _appUserRepository
-                    .getUserById(doc.reference.parent.id);
+                    .getUserById(doc.reference.parent.parent!.id);
 
                 return PostDto.fromJson(doc.data())
                     .toDomain(user.getOrElse(() => throw Error()));
