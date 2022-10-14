@@ -44,6 +44,7 @@ class SignUpFormCubit extends Cubit<SignUpFormState> {
     if (state.emailAddress.isValid() &&
         state.username.isValid() &&
         state.password.isValid() &&
+        state.confirmationPassword.isValid() &&
         (state.userProfileImage == null || state.userProfileImage!.isValid())) {
       emit(state.copyWith(
           authFailureOrSuccess: null, isSubmiting: true, showErrors: false));
