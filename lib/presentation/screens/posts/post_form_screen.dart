@@ -4,6 +4,7 @@ import 'package:moments_app/presentation/core/config/app_colors.dart';
 import 'package:moments_app/presentation/core/config/app_text_styles.dart';
 import 'package:moments_app/presentation/core/config/svg_paths.dart';
 import 'package:moments_app/presentation/core/widgets/post_widget.dart';
+import 'package:moments_app/presentation/screens/posts/widgets/filter_button.dart';
 
 class PostFormScreen extends StatelessWidget {
   const PostFormScreen({Key? key}) : super(key: key);
@@ -69,42 +70,9 @@ class _Body extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                _FilterButton(size: size, onTap: () {}),
+                FilterButton(size: size, onTap: () {}),
                 SizedBox(height: size.height * .025),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: TextFormField(
-                      cursorHeight: size.height * 0.03,
-                      decoration: InputDecoration(
-                        constraints: BoxConstraints(maxWidth: size.width),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Add Comment",
-                        hintStyle: AppTextStyles.styleWeight500(
-                          fontSize: size.width * .04,
-                          color: AppColors.grey1,
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                        ),
-                        prefixIcon: Container(
-                          decoration: BoxDecoration(shape: BoxShape.circle),
-                          child: SvgPicture.asset(
-                            SvgPaths.google,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                _CommentTextField(size: size),
               ],
             ),
           ),
@@ -114,15 +82,13 @@ class _Body extends StatelessWidget {
   }
 }
 
-class _FilterButton extends StatelessWidget {
-  const _FilterButton({
+class _CommentTextField extends StatelessWidget {
+  const _CommentTextField({
     Key? key,
     required this.size,
-    required this.onTap,
   }) : super(key: key);
 
   final Size size;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -131,32 +97,32 @@ class _FilterButton extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      padding: const EdgeInsets.all(10),
-      child: InkWell(
-        onTap: onTap,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.filter_list_rounded,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: TextFormField(
+          cursorHeight: size.height * 0.03,
+          decoration: InputDecoration(
+            constraints: BoxConstraints(maxWidth: size.width),
+            filled: true,
+            fillColor: Colors.white,
+            hintText: "Add Comment",
+            hintStyle: AppTextStyles.styleWeight500(
+              fontSize: size.width * .04,
               color: AppColors.grey1,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(
-                "Filter",
-                style: TextStyle(
-                  fontSize: size.width * .04,
-                  color: AppColors.grey1,
-                  fontWeight: FontWeight.bold,
-                ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide.none,
+            ),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+            ),
+            prefixIcon: Container(
+              decoration: BoxDecoration(shape: BoxShape.circle),
+              child: SvgPicture.asset(
+                SvgPaths.google,
               ),
             ),
-            Icon(
-              Icons.keyboard_arrow_down_rounded,
-              color: AppColors.grey1,
-            ),
-          ],
+          ),
         ),
       ),
     );
