@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:moments_app/presentation/core/config/app_colors.dart';
 
 import '../config/app_text_styles.dart';
 import '../config/svg_paths.dart';
@@ -92,7 +93,10 @@ class _PostHeader extends StatelessWidget {
         Spacer(),
         IconButton(
           onPressed: () {},
-          icon: Icon(Icons.more_horiz_rounded),
+          icon: Icon(
+            Icons.more_horiz_rounded,
+            color: AppColors.grey1,
+          ),
         ),
       ],
     );
@@ -166,12 +170,18 @@ class _ActionRow extends StatelessWidget {
                 color: Color(0XFFF8F9FE),
               ),
               padding: pagePadding / 3,
-              child: Icon(Icons.keyboard_arrow_up_rounded),
+              child: Icon(
+                Icons.keyboard_arrow_up_rounded,
+                color: AppColors.grey1,
+              ),
             ),
             SizedBox(width: size.width * .03),
             Text(
               "435",
-              style: TextStyle(height: 3),
+              style: TextStyle(
+                height: 3,
+                color: AppColors.grey1,
+              ),
             ),
             SizedBox(width: size.width * .03),
             Container(
@@ -180,18 +190,27 @@ class _ActionRow extends StatelessWidget {
                 color: Color(0XFFF8F9FE),
               ),
               padding: pagePadding / 3,
-              child: Icon(Icons.keyboard_arrow_up_rounded),
+              child: Icon(
+                Icons.keyboard_arrow_up_rounded,
+                color: AppColors.grey1,
+              ),
             ),
           ],
         ),
         Row(
           children: [
-            Icon(Icons.comment_outlined),
+            Icon(
+              Icons.comment_outlined,
+              color: AppColors.grey1,
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * .01),
               child: Text(
                 "15",
-                style: TextStyle(height: 3),
+                style: TextStyle(
+                  height: 3,
+                  color: AppColors.grey1,
+                ),
               ),
             ),
           ],
@@ -200,11 +219,17 @@ class _ActionRow extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * .01),
-              child: Icon(Icons.share),
+              child: Icon(
+                Icons.share,
+                color: AppColors.grey1,
+              ),
             ),
             Text(
               "12",
-              style: TextStyle(height: 3),
+              style: TextStyle(
+                height: 3,
+                color: AppColors.grey1,
+              ),
             ),
           ],
         ),
