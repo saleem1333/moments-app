@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:moments_app/presentation/core/config/app_colors.dart';
-import 'package:moments_app/presentation/core/config/svg_paths.dart';
-import 'package:moments_app/presentation/screens/posts/post_search_screen.dart';
-import 'package:moments_app/presentation/screens/posts/posts_screen.dart';
+
+import '../../core/config/app_colors.dart';
+import '../../core/config/svg_paths.dart';
+import '../posts/post_search_screen.dart';
+import '../posts/posts_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
