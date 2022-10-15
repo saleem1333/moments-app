@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:moments_app/presentation/core/config/app_text_styles.dart';
-import 'package:moments_app/presentation/screens/posts/widgets/filter_button.dart';
 
 import '../../../application/auth/auth_cubit.dart';
 import '../../../domain/app_user/app_user.dart';
 import '../../core/config/app_colors.dart';
+import '../../core/config/app_text_styles.dart';
 import '../../core/config/svg_paths.dart';
 import '../../core/widgets/post_widget.dart';
+import 'widgets/filter_button.dart';
 
 class PostsSearchScreen extends StatefulWidget {
   const PostsSearchScreen({Key? key}) : super(key: key);

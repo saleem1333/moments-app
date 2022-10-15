@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moments_app/presentation/core/config/app_colors.dart';
+
+import '../../../core/config/app_colors.dart';
 
 class FilterButton extends StatelessWidget {
   const FilterButton({

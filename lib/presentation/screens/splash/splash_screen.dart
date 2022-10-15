@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moments_app/application/auth/auth_cubit.dart';
-import 'package:moments_app/application/auth/auth_state.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../application/auth/auth_cubit.dart';
+import '../../../application/auth/auth_state.dart';
 import '../../../routes.dart';
 
 class SplashScreen extends StatelessWidget {
