@@ -5,7 +5,7 @@ class AppTextStyles {
 
   static TextStyle styleWeight200({
     double fontSize = 12,
-    Color? color,
+    Color? color = Colors.black,
     TextDecoration? decoration,
   }) {
     return TextStyle(
@@ -21,7 +21,7 @@ class AppTextStyles {
 
   static TextStyle styleWeight300({
     double fontSize = 12,
-    Color? color,
+    Color? color = Colors.black,
     TextDecoration? decoration,
   }) {
     return TextStyle(
@@ -37,7 +37,7 @@ class AppTextStyles {
 
   static TextStyle styleWeight400({
     double fontSize = 12,
-    Color? color,
+    Color? color = Colors.black,
     TextDecoration? decoration,
   }) {
     return TextStyle(
@@ -53,7 +53,7 @@ class AppTextStyles {
 
   static TextStyle styleWeight500({
     double fontSize = 12,
-    Color? color,
+    Color? color = Colors.black,
     TextDecoration? decoration,
   }) {
     return TextStyle(
@@ -69,7 +69,7 @@ class AppTextStyles {
 
   static TextStyle styleWeight600({
     double fontSize = 12,
-    Color? color,
+    Color? color = Colors.black,
     TextDecoration? decoration,
   }) {
     return TextStyle(
@@ -85,7 +85,7 @@ class AppTextStyles {
 
   static TextStyle styleWeight700({
     double fontSize = 12,
-    Color? color,
+    Color? color = Colors.black,
     TextDecoration? decoration,
   }) {
     return TextStyle(
@@ -101,7 +101,7 @@ class AppTextStyles {
 
   static TextStyle styleWeight900({
     double fontSize = 12,
-    Color? color,
+    Color? color = Colors.black,
     TextDecoration? decoration,
   }) {
     return TextStyle(

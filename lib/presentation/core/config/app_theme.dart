@@ -6,7 +6,7 @@ class AppTheme {
   static ThemeData theme = ThemeData(
     fontFamily: 'Tajawal',
     primaryColor: AppColors.mainColor,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Color(0XFFE8E8ED),
     floatingActionButtonTheme: const FloatingActionButtonThemeData().copyWith(
       backgroundColor: AppColors.mainColor,
     ),
