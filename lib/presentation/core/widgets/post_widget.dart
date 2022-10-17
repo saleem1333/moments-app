@@ -121,22 +121,20 @@ class _TagsRow extends StatelessWidget {
         alignment: WrapAlignment.start,
         direction: Axis.horizontal,
         textDirection: TextDirection.ltr,
+        spacing: size.width * 0.025,
         children: [
           TagChip(
             size: size,
             tagTitle: "funny",
           ),
-          SizedBox(width: size.width * .025),
           TagChip(
             size: size,
             tagTitle: "embarrassing",
           ),
-          SizedBox(width: size.width * .025),
           TagChip(
             size: size,
             tagTitle: "depression",
           ),
-          SizedBox(width: size.width * .025),
           TagChip(
             size: size,
             tagTitle: "cringe",
