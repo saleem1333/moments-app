@@ -97,9 +97,8 @@ class _Body extends StatelessWidget {
     );
 
     return Padding(
-      padding: pagePadding,
-      child: Column(
-        children: [
+        padding: pagePadding,
+        child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -120,18 +119,9 @@ class _Body extends StatelessWidget {
           ),
           SizedBox(height: size.width * .04),
           Expanded(
-            child: ListView(
-              children: List.filled(
-                10,
-                PostWidget(
-                  size: size,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+            child: ListView(children: const []) // search is still not supported,
+          )
+        ]));
   }
 }
 

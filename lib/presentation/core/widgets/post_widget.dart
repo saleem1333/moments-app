@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:moments_app/presentation/core/config/app_colors.dart';
 
+import '../../../domain/posts/post.dart';
 import '../config/app_text_styles.dart';
 import '../config/svg_paths.dart';
 import 'tag_chip.dart';
-
-//TODO: remove
-const String _textPlaceHolder =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit et porttitor magna tellus a purus tincidunt arcu. Erat purus enim viverra rutrum nisi, tincidunt in velit.";
+import 'package:timeago/timeago.dart' as timeago;
 
 class PostWidget extends StatelessWidget {
   const PostWidget({
     Key? key,
+    required this.post,
     required this.size,
   }) : super(key: key);
 
+  final Post post;
   final Size size;
 
   @override
@@ -34,17 +34,21 @@ class PostWidget extends StatelessWidget {
           padding: pagePadding,
           child: Column(
             children: [
-              _PostHeader(size: size),
+              _PostHeader(size: size, post: post),
               SizedBox(height: 15),
               Text(
-                _textPlaceHolder,
+                post.content.getOrCrash(),
                 style: AppTextStyles.styleWeight500(
                   fontSize: size.width * .045,
                 ),
               ),
-              SizedBox(height: 15),
-              _TagsRow(size: size, pagePadding: pagePadding),
-              _ActionRow(pagePadding: pagePadding, size: size),
+              _TagsRow(size: size, pagePadding: pagePadding, tags: post.tags),
+              _ActionRow(
+                pagePadding: pagePadding,
+                size: size,
+                votes: post.votes,
+                comments: post.comments,
+              ),
             ],
           ),
         ),
@@ -57,10 +61,11 @@ class PostWidget extends StatelessWidget {
 class _PostHeader extends StatelessWidget {
   const _PostHeader({
     Key? key,
+    required this.post,
     required this.size,
   }) : super(key: key);
-
   final Size size;
+  final Post post;
 
   @override
   Widget build(BuildContext context) {
@@ -77,13 +82,13 @@ class _PostHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Osama Rida",
+              post.appUser!.username.getOrCrash(),
               style: AppTextStyles.styleWeight600(
                 fontSize: size.width * .048,
               ),
             ),
             Text(
-              "@Os01Ri  .  3d ago",
+              "@${post.appUser!.username.getOrCrash()}  .  ${timeago.format(post.createdAt!)}",
               style: AppTextStyles.styleWeight400(
                 fontSize: size.width * .037,
               ),
@@ -104,56 +109,48 @@ class _PostHeader extends StatelessWidget {
 }
 
 class _TagsRow extends StatelessWidget {
-  const _TagsRow({
-    Key? key,
-    required this.size,
-    required this.pagePadding,
-  }) : super(key: key);
+  const _TagsRow(
+      {Key? key,
+      required this.size,
+      required this.pagePadding,
+      required this.tags})
+      : super(key: key);
 
-  final Size size;
   final EdgeInsets pagePadding;
+  final Size size;
+  final PostTags tags;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: size.width - pagePadding.right * 2,
       child: Wrap(
-        alignment: WrapAlignment.start,
-        direction: Axis.horizontal,
-        textDirection: TextDirection.ltr,
-        spacing: size.width * 0.025,
-        children: [
-          TagChip(
-            size: size,
-            tagTitle: "funny",
-          ),
-          TagChip(
-            size: size,
-            tagTitle: "embarrassing",
-          ),
-          TagChip(
-            size: size,
-            tagTitle: "depression",
-          ),
-          TagChip(
-            size: size,
-            tagTitle: "cringe",
-          ),
-        ],
-      ),
+          alignment: WrapAlignment.start,
+          direction: Axis.horizontal,
+          textDirection: TextDirection.ltr,
+          spacing: size.width * 0.025,
+          children: tags
+              .getOrCrash()
+              .map(
+                  (tag) => TagChip(size: size, tagTitle: tag.name.getOrCrash()))
+              .toList()),
     );
   }
 }
 
 class _ActionRow extends StatelessWidget {
-  const _ActionRow({
-    Key? key,
-    required this.pagePadding,
-    required this.size,
-  }) : super(key: key);
+  const _ActionRow(
+      {Key? key,
+      required this.pagePadding,
+      required this.size,
+      required this.votes,
+      required this.comments})
+      : super(key: key);
 
   final EdgeInsets pagePadding;
   final Size size;
+  final PostVotes votes;
+  final PostComments comments;
 
   @override
   Widget build(BuildContext context) {
@@ -175,11 +172,8 @@ class _ActionRow extends StatelessWidget {
             ),
             SizedBox(width: size.width * .03),
             Text(
-              "435",
-              style: TextStyle(
-                height: 3,
-                color: AppColors.grey1,
-              ),
+              votes.getOrCrash().length.toString(),
+              style: TextStyle(height: 3),
             ),
             SizedBox(width: size.width * .03),
             Container(
@@ -189,7 +183,7 @@ class _ActionRow extends StatelessWidget {
               ),
               padding: pagePadding / 3,
               child: Icon(
-                Icons.keyboard_arrow_up_rounded,
+                Icons.keyboard_arrow_down_rounded,
                 color: AppColors.grey1,
               ),
             ),
@@ -204,11 +198,8 @@ class _ActionRow extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * .01),
               child: Text(
-                "15",
-                style: TextStyle(
-                  height: 3,
-                  color: AppColors.grey1,
-                ),
+                comments.getOrCrash().length.toString(),
+                style: TextStyle(height: 3),
               ),
             ),
           ],
