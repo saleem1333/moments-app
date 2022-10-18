@@ -42,7 +42,7 @@ class _Body extends StatelessWidget {
         state.authFailureOrSuccess?.fold((f) {
           // handle failure logic
         }, (_) {
-          context.go(Routes.posts);
+          context.go(Routes.home);
         });
       },
       child: Form(
