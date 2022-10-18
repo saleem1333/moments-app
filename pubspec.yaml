@@ -55,6 +55,7 @@ flutter:
   assets:
     - assets/svg/vectors/
     - assets/svg/sign_in/
+    - assets/svg/nav_bar/
     
   fonts:
     - family: Tajawal
@@ -66,3 +67,7 @@ flutter:
         - asset: assets/fonts/Tajawal-Light.ttf
         - asset: assets/fonts/Tajawal-Medium.ttf
         - asset: assets/fonts/Tajawal-Regular.ttf
+
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moments_app/application/auth/auth_cubit.dart';
-import 'package:moments_app/application/auth/auth_state.dart';
 import 'package:go_router/go_router.dart';
+import 'package:moments_app/presentation/core/config/global_functions.dart';
 
+import '../../../application/auth/auth_cubit.dart';
+import '../../../application/auth/auth_state.dart';
 import '../../../routes.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -15,11 +16,11 @@ class SplashScreen extends StatelessWidget {
       listener: (context, state) {
         state.when(
             initial: () {},
-            authenticated: () => context.go(Routes.posts),
+            authenticated: () => context.go(Routes.home),
             unAuthenticated: () => context.go(Routes.signIn));
       },
       child: Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+        body: Center(child: GlobalUiFunctions.loading()),
       ),
     );
   }

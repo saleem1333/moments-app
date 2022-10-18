@@ -2,6 +2,7 @@ class SvgPaths {
   const SvgPaths._();
   static const String _vectorPath = 'assets/svg/vectors/';
   static const String _signInPath = 'assets/svg/sign_in/';
+  static const String _navBarPath = 'assets/svg/nav_bar/';
 
   ///vector
   static const String welcome = '${_vectorPath}welcome.svg';
@@ -17,4 +18,9 @@ class SvgPaths {
   static const String apple = '${_signInPath}apple.svg';
   static const String google = '${_signInPath}google.svg';
   static const String facebook = '${_signInPath}facebook.svg';
+
+  ///Nav Bar
+  static const String homeIcon = '${_navBarPath}home.svg';
+  static const String searchIcon = '${_navBarPath}search.svg';
+  static const String addIcon = '${_navBarPath}add.svg';
 }

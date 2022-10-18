@@ -1,32 +1,146 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:moments_app/application/auth/auth_cubit.dart';
 import 'package:moments_app/application/posts/posts_fetcher/posts_fetcher_cubit.dart';
 import 'package:moments_app/injections.dart';
 
+import '../../../application/categories/categories_fetcher_cubit.dart';
+import '../../../domain/categories/category.dart';
 import '../../../routes.dart';
+import '../../core/config/app_colors.dart';
+import '../../core/config/app_text_styles.dart';
+import '../../core/config/global_functions.dart';
+import '../../core/config/svg_paths.dart';
+import '../../core/widgets/post_widget.dart';
 
 class PostsScreen extends StatelessWidget {
   const PostsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          leading: IconButton(
-              onPressed: () async {
-                context
-                    .read<AuthCubit>()
-                    .logout()
-                    .then((_) => context.go(Routes.signIn));
-              },
-              icon: Icon(Icons.logout))),
-      body: BlocProvider<PostsFetcherCubit>(
-        create: (context) => getIt<PostsFetcherCubit>()..fetchAllPosts(),
-        child: _Body(),
-      ),
+    return BlocProvider<CategoriesFetcherCubit>(
+      create: (context) =>
+          getIt<CategoriesFetcherCubit>()..fetchAllCategories(),
+      child: Builder(builder: (context) {
+        return context.watch<CategoriesFetcherCubit>().state.when(
+            initial: () => const Scaffold(body: SizedBox()),
+            loading: () => Scaffold(body: GlobalUiFunctions.loading()),
+            loadedSuccess: ((categories) =>
+                _PostsScreen(categories: categories)),
+            loadedFailure: (f) => Scaffold(
+                  body: Center(child: Text(f.message)),
+                ));
+      }),
     );
+  }
+}
+
+class _PostsScreen extends StatefulWidget {
+  const _PostsScreen({Key? key, required this.categories}) : super(key: key);
+
+  final List<Category> categories;
+
+  @override
+  State<_PostsScreen> createState() => _PostsScreenState();
+}
+
+class _PostsScreenState extends State<_PostsScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController tabController;
+  @override
+  void initState() {
+    super.initState();
+    tabController =
+        TabController(length: widget.categories.length, vsync: this);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final padding = EdgeInsets.symmetric(horizontal: size.width * .04);
+    return BlocProvider(
+        create: (context) => getIt<PostsFetcherCubit>()
+          ..fetchAllPosts(widget.categories[tabController.index]),
+        child: Builder(builder: (context) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              title: Text(
+                "Momento",
+                style: TextStyle(
+                  fontSize: size.width * .055,
+                  fontFamily: "Pacifico",
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              centerTitle: true,
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Icons.filter_list_rounded,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.more_vert_outlined,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    context
+                        .read<AuthCubit>()
+                        .logout()
+                        .then((_) => context.go(Routes.signIn));
+                  },
+                ),
+              ],
+              leading: Container(
+                margin: padding,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: SvgPicture.asset(SvgPaths.google),
+              ),
+              bottom: TabBar(
+                isScrollable: true,
+                onTap: (index) {
+                  context
+                      .read<PostsFetcherCubit>()
+                      .fetchAllPosts(widget.categories[tabController.index]);
+                },
+                labelStyle: AppTextStyles.styleWeight700(
+                  fontSize: size.width * .041,
+                  color: AppColors.mainColor,
+                ),
+                unselectedLabelStyle: AppTextStyles.styleWeight400(
+                  fontSize: size.width * .04,
+                  color: AppColors.mainColor,
+                ),
+                indicatorColor: AppColors.mainColor,
+                labelColor: AppColors.mainColor,
+                indicatorSize: TabBarIndicatorSize.label,
+                tabs: widget.categories
+                    .map((category) => Tab(
+                          text: category.name.getOrCrash(),
+                        ))
+                    .toList(),
+                controller: tabController,
+              ),
+            ),
+            body: _Body(),
+          );
+        }));
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
   }
 }
 
@@ -34,61 +148,35 @@ class _Body extends StatelessWidget {
   const _Body({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final state = context.watch<PostsFetcherCubit>().state;
-    final user = context
-        .read<AuthCubit>()
-        .user; // we're not using watch here because we don't actually need to listen for changes
+    final Size size = MediaQuery.of(context).size;
+    final padding = EdgeInsets.symmetric(
+      horizontal: size.width * .04,
+      vertical: size.width * .04,
+    );
 
     return Column(
       children: [
-        if (user != null) Text("Welcome: ${context.read<AuthCubit>().user!}"),
         Expanded(
           child: Center(
-              child: state.when(
-                  initial: () => Container(),
-                  loading: () => const CircularProgressIndicator(),
-                  loadedSuccess: (posts) {
-                    if (posts.isEmpty) {
-                      return Text("No posts yet!");
-                    }
-                    return Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: ListView.builder(
-                        itemCount: posts.length,
-                        itemBuilder: (context, index) {
-                          final post = posts[index];
-                          return Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10.0),
-                            color: Colors.amber,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(post.appUser!.username.getOrCrash()),
-                                  ],
-                                ),
-                                Text(post.content.getOrCrash()),
-                                Row(
-                                  children: post.tags
-                                      .getOrCrash()
-                                      .map((tag) => Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          color: Colors.blue,
-                                          child: Text(tag.name.getOrCrash())))
-                                      .toList(),
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    );
-                  },
-                  loadedFailure: (f) => Text("Error fetching posts"))),
+            child: state.when(
+              initial: () => const SizedBox(),
+              loading: GlobalUiFunctions.loading,
+              loadedSuccess: (posts) {
+                if (posts.isEmpty) {
+                  return GlobalUiFunctions.emptyWidget;
+                }
+                return ListView(
+                    padding: padding,
+                    children: posts
+                        .map((post) => PostWidget(post: post, size: size))
+                        .toList());
+              },
+              loadedFailure: (_) => Text("Error fetching posts"),
+            ),
+          ),
         ),
       ],
     );
