@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:moments_app/domain/category/category.dart';
+import 'package:moments_app/domain/categories/category.dart';
 import 'package:moments_app/domain/core/id_generator.dart';
 
 import '../../../domain/core/failure.dart';

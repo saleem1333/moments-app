@@ -1,14 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:moments_app/application/auth/auth_cubit.dart';
+import 'package:moments_app/application/posts/posts_fetcher/posts_fetcher_cubit.dart';
+import 'package:moments_app/injections.dart';
 
-import '../../../application/auth/auth_cubit.dart';
-import '../../../application/category/category_watcher_cubit.dart';
-import '../../../application/posts/post_watcher/post_watcher_cubit.dart';
-import '../../../domain/category/category.dart';
-import '../../../injections.dart';
+import '../../../application/categories/categories_fetcher_cubit.dart';
+import '../../../domain/categories/category.dart';
 import '../../../routes.dart';
 import '../../core/config/app_colors.dart';
 import '../../core/config/app_text_styles.dart';
@@ -21,11 +20,11 @@ class PostsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CategoryWatcherCubit>(
+    return BlocProvider<CategoriesFetcherCubit>(
       create: (context) =>
-          getIt<CategoryWatcherCubit>()..startWatchCategories(),
+          getIt<CategoriesFetcherCubit>()..fetchAllCategories(),
       child: Builder(builder: (context) {
-        return context.watch<CategoryWatcherCubit>().state.when(
+        return context.watch<CategoriesFetcherCubit>().state.when(
             initial: () => const Scaffold(body: SizedBox()),
             loading: () => Scaffold(body: GlobalUiFunctions.loading()),
             loadedSuccess: ((categories) =>
@@ -62,81 +61,80 @@ class _PostsScreenState extends State<_PostsScreen>
     final size = MediaQuery.of(context).size;
     final padding = EdgeInsets.symmetric(horizontal: size.width * .04);
     return BlocProvider(
-      create: (context) => getIt<PostWatcherCubit>()
-        ..watchAllStarted(widget.categories[tabController.index]),
-      child: Builder(builder: (context) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            title: Text(
-              "Momento",
-              style: TextStyle(
-                fontSize: size.width * .055,
-                fontFamily: "Pacifico",
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            centerTitle: true,
-            actions: [
-              IconButton(
-                icon: Icon(
-                  Icons.filter_list_rounded,
+        create: (context) => getIt<PostsFetcherCubit>()
+          ..fetchAllPosts(widget.categories[tabController.index]),
+        child: Builder(builder: (context) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              title: Text(
+                "Momento",
+                style: TextStyle(
+                  fontSize: size.width * .055,
+                  fontFamily: "Pacifico",
                   color: Colors.black,
+                  fontWeight: FontWeight.bold,
                 ),
-                onPressed: () {},
               ),
-              IconButton(
-                icon: Icon(
-                  Icons.more_vert_outlined,
-                  color: Colors.black,
+              centerTitle: true,
+              actions: [
+                IconButton(
+                  icon: Icon(
+                    Icons.filter_list_rounded,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {},
                 ),
-                onPressed: () {
+                IconButton(
+                  icon: Icon(
+                    Icons.more_vert_outlined,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    context
+                        .read<AuthCubit>()
+                        .logout()
+                        .then((_) => context.go(Routes.signIn));
+                  },
+                ),
+              ],
+              leading: Container(
+                margin: padding,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: SvgPicture.asset(SvgPaths.google),
+              ),
+              bottom: TabBar(
+                isScrollable: true,
+                onTap: (index) {
                   context
-                      .read<AuthCubit>()
-                      .logout()
-                      .then((_) => context.go(Routes.signIn));
+                      .read<PostsFetcherCubit>()
+                      .fetchAllPosts(widget.categories[tabController.index]);
                 },
+                labelStyle: AppTextStyles.styleWeight700(
+                  fontSize: size.width * .041,
+                  color: AppColors.mainColor,
+                ),
+                unselectedLabelStyle: AppTextStyles.styleWeight400(
+                  fontSize: size.width * .04,
+                  color: AppColors.mainColor,
+                ),
+                indicatorColor: AppColors.mainColor,
+                labelColor: AppColors.mainColor,
+                indicatorSize: TabBarIndicatorSize.label,
+                tabs: widget.categories
+                    .map((category) => Tab(
+                          text: category.name.getOrCrash(),
+                        ))
+                    .toList(),
+                controller: tabController,
               ),
-            ],
-            leading: Container(
-              margin: padding,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-              ),
-              child: SvgPicture.asset(SvgPaths.google),
             ),
-            bottom: TabBar(
-              isScrollable: true,
-              onTap: (index) {
-                context
-                    .read<PostWatcherCubit>()
-                    .changeCategory(widget.categories[tabController.index]);
-              },
-              labelStyle: AppTextStyles.styleWeight700(
-                fontSize: size.width * .041,
-                color: AppColors.mainColor,
-              ),
-              unselectedLabelStyle: AppTextStyles.styleWeight400(
-                fontSize: size.width * .04,
-                color: AppColors.mainColor,
-              ),
-              indicatorColor: AppColors.mainColor,
-              labelColor: AppColors.mainColor,
-              indicatorSize: TabBarIndicatorSize.label,
-              tabs: widget.categories
-                  .map((category) => Tab(
-                        text: category.name.getOrCrash(),
-                      ))
-                  .toList(),
-              controller: tabController,
-            ),
-          ),
-          body: _Body(),
-        );
-      }),
-    );
+            body: _Body(),
+          );
+        }));
   }
 
   @override
@@ -152,7 +150,7 @@ class _Body extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<PostWatcherCubit>().state;
+    final state = context.watch<PostsFetcherCubit>().state;
     final Size size = MediaQuery.of(context).size;
     final padding = EdgeInsets.symmetric(
       horizontal: size.width * .04,

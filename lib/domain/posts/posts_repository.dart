@@ -1,19 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:moments_app/domain/posts/post.dart';
 
-import '../category/category.dart';
+import '../categories/category.dart';
 import '../core/failure.dart';
 
 abstract class PostsRepository {
-  /// watch all posts of all users
-  Stream<Either<Failure, List<Post>>> watchAllPosts();
+  /// fetch all posts of all users
+  Future<Either<Failure, List<Post>>> fetchAllPosts();
 
-  Stream<Either<Failure, List<Post>>> watchAllPostsByCategory(
+  /// fetch posts by category
+  Future<Either<Failure, List<Post>>> fetchAllPostsByCategory(
       Category cateogory);
-  Stream<Either<Failure, List<Post>>> watchAllPostsByTags(PostTags tags);
 
-  /// watch posts for a specific user
-  Stream<Either<Failure, List<Post>>> watchAllPostsByUserId(String id);
+  /// fetch posts by the given tags   
+  Future<Either<Failure, List<Post>>> fetchAllPostsByTags(PostTags tags);
+
+  /// fetch posts for a specific user
+  Future<Either<Failure, List<Post>>> fetchAllPostsByUserId(String id);
 
   /// create new post
   Future<Either<Failure, Unit>> createPost(Post post);

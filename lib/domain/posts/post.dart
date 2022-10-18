@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:moments_app/domain/category/category.dart';
+import 'package:moments_app/domain/categories/category.dart';
 import 'package:moments_app/domain/core/failure.dart';
 import 'package:moments_app/domain/posts/comment.dart';
 import 'package:moments_app/domain/posts/vote.dart';

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moments_app/application/posts/post_form/post_form_state.dart';
-import 'package:moments_app/domain/category/category.dart';
+import 'package:moments_app/domain/categories/category.dart';
 import 'package:moments_app/domain/core/id_generator.dart';
 import 'package:moments_app/domain/posts/posts_repository.dart';
 import 'package:moments_app/domain/tags/tag.dart';

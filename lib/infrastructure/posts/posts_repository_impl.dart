@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:moments_app/domain/app_user/app_user_repository.dart';
-import 'package:moments_app/domain/category/category.dart';
-import 'package:moments_app/domain/category/category_repository.dart';
+import 'package:moments_app/domain/categories/category.dart';
+import 'package:moments_app/domain/categories/category_repository.dart';
 import 'package:moments_app/domain/core/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:moments_app/infrastructure/core/firestore_collections.dart';
@@ -21,8 +21,8 @@ class PostsRepositoryImpl implements PostsRepository {
       this._firestore, this._appUserRepository, this._cateogoryRepository);
 
   @override
-  Stream<Either<Failure, List<Post>>> watchAllPosts() async* {
-    yield* _firestore
+  Future<Either<Failure, List<Post>>> fetchAllPosts() async {
+    return _firestore
         .collectionGroup(FirestoreCollections.posts)
         .orderBy("timestamp", descending: true)
         .snapshots()
@@ -37,20 +37,21 @@ class PostsRepositoryImpl implements PostsRepository {
                   .toDomain(user.getOrElse(() => throw Error()));
             }).toList()))
         .handleError((e) => left(Failure(e.toString())))
-        .asyncMap((snapshot) async =>
-            snapshot.fold((l) => left(l), (r) async => right(await r)));
+        .asyncMap<Either<Failure, List<Post>>>((snapshot) async =>
+            snapshot.fold((l) => left(l), (r) async => right(await r)))
+        .first;
   }
 
   @override
-  Stream<Either<Failure, List<Post>>> watchAllPostsByCategory(
-      Category category) async* {
+  Future<Either<Failure, List<Post>>> fetchAllPostsByCategory(
+      Category category) async {
     final fetchedCategory =
         await _cateogoryRepository.findCategoryByName(category.name);
     if (fetchedCategory == null) {
-      yield left<Failure, List<Post>>(
+      return left<Failure, List<Post>>(
           const Failure("The given category doesn't exist"));
     } else {
-      yield* _firestore
+      return _firestore
           .collectionGroup(FirestoreCollections.posts)
           .where("category.name", isEqualTo: category.name.getOrCrash())
           .orderBy("timestamp", descending: true)
@@ -65,33 +66,31 @@ class PostsRepositoryImpl implements PostsRepository {
                     .toDomain(user.getOrElse(() => throw Error()));
               }).toList()))
           .handleError((e) => left(Failure(e.toString())))
-          .asyncMap((snapshot) async =>
-              snapshot.fold((l) => left(l), (r) async => right(await r)));
+          .asyncMap<Either<Failure, List<Post>>>((snapshot) async =>
+              snapshot.fold((l) => left(l), (r) async => right(await r)))
+          .first;
     }
   }
 
   /// NOTE: THIS METHOD HAS NOT BEEN TESTED YET
   @override
-  Stream<Either<Failure, List<Post>>> watchAllPostsByTags(
-      PostTags tags) async* {
+  Future<Either<Failure, List<Post>>> fetchAllPostsByTags(PostTags tags) async {
     Iterable<String> tagNames =
         tags.getOrCrash().map((tag) => tag.name.getOrCrash());
-    yield* watchAllPosts()
-        .map((eitherFailureOrPosts) => eitherFailureOrPosts.fold(
-            (l) => left(l),
-            (posts) => right(posts.where((post) {
-                  Iterable<String> postTagNames = post.tags
-                      .getOrCrash()
-                      .map((tag) => tag.name.getOrCrash());
-                  return tagNames.every((name) => postTagNames.contains(name));
-                }).toList())));
+    Either<Failure, List<Post>> eitherFailureOrPosts = await fetchAllPosts();
+    return eitherFailureOrPosts.fold(
+        (l) => left(l),
+        (posts) => right(posts.where((post) {
+              Iterable<String> postTagNames =
+                  post.tags.getOrCrash().map((tag) => tag.name.getOrCrash());
+              return tagNames.every((name) => postTagNames.contains(name));
+            }).toList()));
   }
 
   /// NOTE: THIS METHOD HAS NOT BEEN TESTED YET
-
   @override
-  Stream<Either<Failure, List<Post>>> watchAllPostsByUserId(String id) async* {
-    yield* _firestore
+  Future<Either<Failure, List<Post>>> fetchAllPostsByUserId(String id) async {
+    return _firestore
         .collection(FirestoreCollections.users)
         .doc(id)
         .collection(FirestoreCollections.posts)
@@ -104,8 +103,9 @@ class PostsRepositoryImpl implements PostsRepository {
                   .toDomain(user.getOrElse(() => throw Error()));
             }).toList()))
         .handleError((error) => left(Failure(error.toString())))
-        .asyncMap((snapshot) async =>
-            snapshot.fold((l) => left(l), (r) async => right(await r)));
+        .asyncMap<Either<Failure, List<Post>>>((snapshot) async =>
+            snapshot.fold((l) => left(l), (r) async => right(await r)))
+        .first;
   }
 
   @override
