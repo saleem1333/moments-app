@@ -7,10 +7,13 @@ class MainButton extends StatelessWidget {
     Key? key,
     required this.text,
     this.width,
+    this.borderWidth,
     this.height,
     this.fontSize,
     this.borderRadius,
     this.shadowColor,
+    this.borderColor,
+    this.elevation,
     required this.color,
     required this.onPressed,
     this.textColor = Colors.white,
@@ -25,19 +28,28 @@ class MainButton extends StatelessWidget {
   final VoidCallback onPressed;
   final BorderRadiusGeometry? borderRadius;
   final Color? shadowColor;
+  final Color? borderColor;
+  final double? elevation;
+  final double? borderWidth;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return ElevatedButton(
       style: ButtonStyle(
+        elevation: (elevation == null)
+            ? null
+            : MaterialStateProperty.all<double>(elevation!),
         shadowColor:
             shadowColor != null ? MaterialStateProperty.all(shadowColor) : null,
         backgroundColor: MaterialStateProperty.all(color),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: borderRadius ?? BorderRadius.circular(10),
-            side: const BorderSide(color: Colors.transparent),
+            side: BorderSide(
+              color: borderColor ?? Colors.transparent,
+              width: borderWidth ?? 1,
+            ),
           ),
         ),
         fixedSize: MaterialStateProperty.all(
@@ -54,7 +66,7 @@ class MainButton extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: AppTextStyles.styleWeight500(
           color: textColor,
-          fontSize: fontSize ?? size.width * .0475,
+          fontSize: fontSize ?? size.width * .04,
         ),
       ),
     );
