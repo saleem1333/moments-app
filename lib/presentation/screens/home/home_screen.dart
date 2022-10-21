@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:moments_app/presentation/screens/posts/post_form_screen.dart';
 
 import '../../core/config/app_colors.dart';
 import '../../core/config/svg_paths.dart';
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: const [
           PostsScreen(),
           PostsSearchScreen(),
-          SizedBox(),
+          PostFormScreen(),
           SizedBox(),
         ],
       ),
