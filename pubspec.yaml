@@ -56,6 +56,7 @@ flutter:
     - assets/svg/vectors/
     - assets/svg/sign_in/
     - assets/svg/nav_bar/
+    - assets/svg/icons/
     
   fonts:
     - family: Tajawal

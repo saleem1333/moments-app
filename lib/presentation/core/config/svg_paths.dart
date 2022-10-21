@@ -3,10 +3,16 @@ class SvgPaths {
   static const String _vectorPath = 'assets/svg/vectors/';
   static const String _signInPath = 'assets/svg/sign_in/';
   static const String _navBarPath = 'assets/svg/nav_bar/';
+  static const String _iconsPath = 'assets/svg/icons/';
+
+  /// icons
+  static const String successIcon = '${_iconsPath}success.svg';
+  
 
   ///vector
   static const String welcome = '${_vectorPath}welcome.svg';
   static const String signup = '${_vectorPath}signup.svg';
+  static const String createPost = '${_vectorPath}create-post.svg';
   static const String resetPassword = '${_vectorPath}reset-password.svg';
 
   ///sign in
