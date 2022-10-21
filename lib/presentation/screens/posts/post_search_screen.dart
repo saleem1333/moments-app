@@ -7,7 +7,6 @@ import '../../../domain/app_user/app_user.dart';
 import '../../core/config/app_colors.dart';
 import '../../core/config/app_text_styles.dart';
 import '../../core/config/svg_paths.dart';
-import '../../core/widgets/post_widget.dart';
 import 'widgets/filter_button.dart';
 
 class PostsSearchScreen extends StatefulWidget {
@@ -54,7 +53,7 @@ class _PostsSearchScreenState extends State<PostsSearchScreen>
         title: Text(
           "Search",
           style: TextStyle(
-            fontSize: size.width * .055,
+            fontSize: size.width * .045,
             color: Colors.black,
             fontWeight: FontWeight.w500,
           ),
@@ -119,8 +118,9 @@ class _Body extends StatelessWidget {
           ),
           SizedBox(height: size.width * .04),
           Expanded(
-            child: ListView(children: const []) // search is still not supported,
-          )
+              child:
+                  ListView(children: const []) // search is still not supported,
+              )
         ]));
   }
 }
